@@ -751,41 +751,60 @@ h1, h2, h3, h4, h5, h6, .brand-title {
 }
 
 /* ==========================================================================
-   POKA-YOKE DEFENSIVO DE UI (Resiliencia Estructural contra Fallos de Red)
+   POKA-YOKE DEFENSIVO DE UI (Resiliencia Estructural y Panel Deslizable)
    ========================================================================== */
 aside {
   display: flex !important;
   flex-direction: column !important;
-  width: 16rem !important;
-  min-width: 16rem !important;
-  max-width: 16rem !important;
+  width: 17rem !important;
+  min-width: 17rem !important;
+  max-width: 17rem !important;
   flex-shrink: 0 !important;
-  transition: transform 0.25s ease, opacity 0.2s ease;
+  height: 100vh !important;
+  max-height: 100vh !important;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), width 0.3s ease, margin 0.3s ease !important;
 }
 
-/* Ocultar barra lateral cuando esté colapsada (Modo Pantalla Completa y Móvil) */
-aside.sidebar-collapsed {
-  display: none !important;
-  width: 0 !important;
-  min-width: 0 !important;
-  max-width: 0 !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  border: none !important;
-  overflow: hidden !important;
-  pointer-events: none !important;
+/* Ocultar barra lateral en escritorio cuando se colapsa */
+@media (min-width: 1024px) {
+  aside.sidebar-collapsed {
+    display: none !important;
+    width: 0 !important;
+    min-width: 0 !important;
+    max-width: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    overflow: hidden !important;
+  }
 }
 
-/* Comportamiento Móvil / Tablet (< 1024px) */
+/* Comportamiento Móvil / Tablet (< 1024px): Desplazamiento Suave a la Izquierda */
 @media (max-width: 1023px) {
   aside {
     position: fixed !important;
     top: 0 !important;
     left: 0 !important;
     bottom: 0 !important;
-    height: 100vh !important;
+    height: 100% !important;
+    height: 100dvh !important;
+    max-height: 100dvh !important;
+    width: 18rem !important;
+    max-width: 86vw !important;
     z-index: 50 !important;
-    box-shadow: 6px 0 28px rgba(0, 0, 0, 0.6) !important;
+    transform: translateX(0) !important;
+    box-shadow: 8px 0 32px rgba(0, 0, 0, 0.7) !important;
+    touch-action: pan-y !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  /* Desplazamiento hacia la izquierda para ocultar sin perder el menú */
+  aside.sidebar-collapsed {
+    transform: translateX(-100%) !important;
+    box-shadow: none !important;
+    pointer-events: none !important;
+    visibility: hidden !important;
   }
 }
 
@@ -793,6 +812,11 @@ aside nav {
   display: flex !important;
   flex-direction: column !important;
   gap: 0.25rem !important;
+  flex: 1 1 0% !important;
+  min-height: 0 !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  overscroll-behavior: contain !important;
 }
 
 aside nav button {
