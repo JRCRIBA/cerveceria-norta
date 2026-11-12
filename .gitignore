@@ -1,0 +1,13 @@
+# Dependencias y entornos
+node_modules/
+.next/
+__pycache__/
+*.pyc
+
+# Respaldos y temporales
+*.bak*
+*.tmp
+*.log
+.env*
+.DS_Store
+Thumbs.db

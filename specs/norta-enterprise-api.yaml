@@ -1,0 +1,677 @@
+openapi: 3.1.0
+info:
+  title: Cervecería NORTA OS - Enterprise Architecture API
+  version: 6.0.0
+  description: >
+    Especificación formal (SSOT) del sistema de gestión operativa, producción,
+    inventarios en COP, CRM B2B, BPM e inocuidad sanitaria INVIMA de Cervecería NORTA SAS.
+    Diseñado bajo metodología Spec-Driven Development (SDD) para Next.js 14 y Cloud Firestore.
+
+servers:
+  - url: http://localhost:3000
+    description: Entorno de Desarrollo Local Next.js
+  - url: https://cerveceria-norta.web.app
+    description: Entorno de Producción Cloud Firebase
+
+tags:
+  - name: Telemetry & Health
+    description: Verificación de salud y telemetría de auditoría
+  - name: Production & Brewing
+    description: Fórmulas de recetas, lotes en proceso y telemetría de tanques
+  - name: Inventory & ERP
+    description: Kardex de materias primas, producto terminado y movimientos
+  - name: Commercial & CRM
+    description: Directorio B2B, pedidos de venta y trazabilidad de barriles (Kegs)
+  - name: Quality & Processes
+    description: Bitácoras de sanitización CIP y pruebas analíticas de laboratorio
+  - name: INVIMA & Sanitation
+    description: 11 Programas de Buenas Prácticas de Manufactura (BPM)
+  - name: Export & Reports
+    description: Generación dinámica de actas normativas oficiales (Word/Excel)
+
+paths:
+  /api/v1/health:
+    get:
+      summary: Verificación de estado del servidor
+      operationId: getHealthStatus
+      tags: [Telemetry & Health]
+      responses:
+        '200':
+          description: Servidor respondiendo correctamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "OK"
+                  timestamp:
+                    type: string
+                    format: date-time
+
+  /api/v1/recipes:
+    get:
+      summary: Listado de recetas maestras de autor
+      operationId: getRecipes
+      tags: [Production & Brewing]
+      responses:
+        '200':
+          description: Colección de recetas de autor
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Recipe'
+
+  /api/v1/batches:
+    get:
+      summary: Listado de lotes de producción
+      operationId: getBatches
+      tags: [Production & Brewing]
+      responses:
+        '200':
+          description: Lotes registrados en planta
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Batch'
+    post:
+      summary: Crear un nuevo lote de producción
+      operationId: createBatch
+      tags: [Production & Brewing]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewBatchPayload'
+      responses:
+        '201':
+          description: Lote creado exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Batch'
+        '400':
+          $ref: '#/components/responses/ProblemDetails400'
+
+  /api/v1/tanks:
+    get:
+      summary: Telemetría y estado de tanques
+      operationId: getTanks
+      tags: [Production & Brewing]
+      responses:
+        '200':
+          description: Estado en tiempo real de los fermentadores y maceradores
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Tank'
+
+  /api/v1/inventory/raw:
+    get:
+      summary: Kardex de materias primas
+      operationId: getRawInventory
+      tags: [Inventory & ERP]
+      responses:
+        '200':
+          description: Stock de insumos, maltas, lúpulos y químicos con costeo en COP
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RawInventoryItem'
+
+  /api/v1/inventory/finished-goods:
+    get:
+      summary: Inventario de producto terminado
+      operationId: getFinishedGoods
+      tags: [Inventory & ERP]
+      responses:
+        '200':
+          description: Stock de botellas y barriles con precios mayoristas
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FinishedGood'
+
+  /api/v1/inventory/movements:
+    get:
+      summary: Registro de movimientos de almacén
+      operationId: getInventoryMovements
+      tags: [Inventory & ERP]
+      responses:
+        '200':
+          description: Bitácora de entradas, salidas y mermas
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InventoryMovement'
+    post:
+      summary: Registrar nuevo movimiento en kardex
+      operationId: createInventoryMovement
+      tags: [Inventory & ERP]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InventoryMovement'
+      responses:
+        '201':
+          description: Movimiento asentado
+        '400':
+          $ref: '#/components/responses/ProblemDetails400'
+
+  /api/v1/clients:
+    get:
+      summary: Directorio comercial de clientes B2B
+      operationId: getClients
+      tags: [Commercial & CRM]
+      responses:
+        '200':
+          description: Listado de clientes B2B
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Client'
+
+  /api/v1/sales-orders:
+    get:
+      summary: Historial de pedidos de venta
+      operationId: getSalesOrders
+      tags: [Commercial & CRM]
+      responses:
+        '200':
+          description: Pedidos comerciales registrados
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SalesOrder'
+    post:
+      summary: Crear pedido de venta
+      operationId: createSalesOrder
+      tags: [Commercial & CRM]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SalesOrder'
+      responses:
+        '201':
+          description: Pedido registrado exitosamente
+        '400':
+          $ref: '#/components/responses/ProblemDetails400'
+
+  /api/v1/kegs:
+    get:
+      summary: Parque de barriles y trazabilidad
+      operationId: getKegs
+      tags: [Commercial & CRM]
+      responses:
+        '200':
+          description: Barriles en planta y en comodato de clientes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Keg'
+
+  /api/v1/cip-logs:
+    get:
+      summary: Bitácoras de sanitización CIP
+      operationId: getCipLogs
+      tags: [Quality & Processes]
+      responses:
+        '200':
+          description: Historial de lavados CIP
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CipLog'
+
+  /api/v1/invima/programs:
+    get:
+      summary: Estado de los 11 Programas de Inocuidad BPM
+      operationId: getInvimaPrograms
+      tags: [INVIMA & Sanitation]
+      responses:
+        '200':
+          description: Directorio de los 11 programas normativos
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InvimaProgram'
+
+  /api/v1/invima/water-logs:
+    get:
+      summary: Bitácora de control de agua potable (FO-AG-002)
+      operationId: getWaterLogs
+      tags: [INVIMA & Sanitation]
+      responses:
+        '200':
+          description: Registros de cloro residual y pH
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WaterControlLog'
+    post:
+      summary: Asentar nueva medición de agua potable
+      operationId: createWaterLog
+      tags: [INVIMA & Sanitation]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WaterControlLog'
+      responses:
+        '201':
+          description: Registro de agua asentado
+        '400':
+          $ref: '#/components/responses/ProblemDetails400'
+
+  /api/v1/export/fo-ag-002:
+    get:
+      summary: Exportar formato oficial FO-AG-002 a DOCX
+      operationId: exportWaterDocx
+      tags: [Export & Reports]
+      responses:
+        '200':
+          description: Documento Word generado con membrete oficial NORTA
+          content:
+            application/vnd.openxmlformats-officedocument.wordprocessingml.document:
+              schema:
+                type: string
+                format: binary
+
+  /api/v1/export/fo-alm-001:
+    get:
+      summary: Exportar formato oficial FO-ALM-001 a XLSX
+      operationId: exportStorageXlsx
+      tags: [Export & Reports]
+      responses:
+        '200':
+          description: Libro Excel generado con registros de ingreso y proveedores
+          content:
+            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
+              schema:
+                type: string
+                format: binary
+
+components:
+  schemas:
+    Recipe:
+      type: object
+      required: [id, name, style, og, fg, abv, ibu]
+      properties:
+        id:
+          type: string
+          example: "rec-cumbre-golden"
+        name:
+          type: string
+          example: "Cumbre Dorada"
+        style:
+          type: string
+          example: "Golden Ale"
+        og:
+          type: number
+          example: 1.048
+        fg:
+          type: number
+          example: 1.009
+        abv:
+          type: number
+          example: 5.1
+        ibu:
+          type: number
+          example: 22
+        srmColor:
+          type: number
+          example: 4.5
+
+    Batch:
+      type: object
+      required: [id, recipeName, style, tankId, volumeLiters, stage, status, startDate]
+      properties:
+        id:
+          type: string
+          example: "BATCH-2026-001"
+        recipeName:
+          type: string
+          example: "Tempestad del Norte"
+        style:
+          type: string
+          example: "Imperial Stout"
+        tankId:
+          type: string
+          example: "TK-01"
+        volumeLiters:
+          type: number
+          example: 1000
+        stage:
+          type: string
+          enum: [Maceración, Hervor, Fermentación, Maduración, Envasado, Finalizado]
+          example: "Fermentación"
+        status:
+          type: string
+          enum: [Activo, En Pausa, Cuarentena, Completado]
+          example: "Activo"
+        startDate:
+          type: string
+          format: date
+          example: "2026-09-20"
+
+    NewBatchPayload:
+      type: object
+      required: [batchCode, recipeId, targetVolumeLiters, tankId]
+      properties:
+        batchCode:
+          type: string
+          example: "NOR-2601-IPA"
+        recipeId:
+          type: string
+          example: "rec-niebla-ipa"
+        targetVolumeLiters:
+          type: number
+          example: 1000
+        tankId:
+          type: string
+          example: "TK-02"
+
+    Tank:
+      type: object
+      required: [id, name, capacityL, type, status]
+      properties:
+        id:
+          type: string
+          example: "TK-01"
+        name:
+          type: string
+          example: "Fermentador F1 (Unitank)"
+        capacityL:
+          type: integer
+          example: 2000
+        type:
+          type: string
+          enum: [Fermentador, Madurador, BBT, Macerador]
+          example: "Fermentador"
+        status:
+          type: string
+          enum: [Disponible, Ocupado, Limpio, CIP_Pendiente, Mantenimiento]
+          example: "Ocupado"
+        tempC:
+          type: number
+          example: 18.5
+        pressureBar:
+          type: number
+          example: 1.2
+
+    RawInventoryItem:
+      type: object
+      required: [id, name, category, stock, unit, costPerUnit]
+      properties:
+        id:
+          type: string
+          example: "RAW-MAL-001"
+        name:
+          type: string
+          example: "Malta Pale Ale 2-Row"
+        category:
+          type: string
+          enum: [Maltas, Lúpulos, Levaduras, Químicos, Empaques]
+          example: "Maltas"
+        stock:
+          type: number
+          example: 1250.0
+        unit:
+          type: string
+          example: "Kg"
+        costPerUnit:
+          type: number
+          example: 7800.0
+        supplier:
+          type: string
+          example: "Insumos Cerveceros de Colombia"
+
+    FinishedGood:
+      type: object
+      required: [id, name, packaging, stockUnits, wholesalePrice]
+      properties:
+        id:
+          type: string
+          example: "FG-CUM-B330"
+        name:
+          type: string
+          example: "Cumbre Golden Ale Botella 330ml"
+        packaging:
+          type: string
+          example: "Botella 330ml"
+        stockUnits:
+          type: integer
+          example: 450
+        wholesalePrice:
+          type: number
+          example: 9500.0
+
+    InventoryMovement:
+      type: object
+      required: [id, date, type, itemId, quantity, responsible]
+      properties:
+        id:
+          type: string
+          example: "MOV-2026-089"
+        date:
+          type: string
+          format: date
+          example: "2026-09-29"
+        type:
+          type: string
+          enum: [ENTRADA, SALIDA, MERMA, TRANSFERENCIA]
+          example: "SALIDA"
+        itemId:
+          type: string
+          example: "RAW-MAL-001"
+        quantity:
+          type: number
+          example: 50.0
+        responsible:
+          type: string
+          example: "Maestro Cervecero"
+
+    Client:
+      type: object
+      required: [id, name, contactName, phone, email, city]
+      properties:
+        id:
+          type: string
+          example: "CLI-001"
+        name:
+          type: string
+          example: "The Craft House Bar"
+        contactName:
+          type: string
+          example: "Carlos Restrepo"
+        phone:
+          type: string
+          example: "+57 312 456 7890"
+        email:
+          type: string
+          example: "compras@crafthouse.co"
+        city:
+          type: string
+          example: "Bogotá"
+        status:
+          type: string
+          example: "ACTIVO"
+
+    SalesOrder:
+      type: object
+      required: [id, clientName, date, totalAmountUSD, status]
+      properties:
+        id:
+          type: string
+          example: "ORD-2026-045"
+        clientName:
+          type: string
+          example: "The Craft House Bar"
+        date:
+          type: string
+          format: date
+          example: "2026-09-29"
+        totalAmountUSD:
+          type: number
+          example: 850.00
+        status:
+          type: string
+          example: "Aprobada"
+
+    Keg:
+      type: object
+      required: [serial, capacityL, style, alert]
+      properties:
+        serial:
+          type: string
+          example: "NOR-K50-014"
+        capacityL:
+          type: integer
+          example: 50
+        style:
+          type: string
+          example: "Cumbre Golden Ale"
+        client:
+          type: string
+          nullable: true
+          example: "The Craft House Bar"
+        daysOut:
+          type: integer
+          example: 12
+        alert:
+          type: string
+          example: "OK"
+
+    CipLog:
+      type: object
+      required: [id, date, equipment, operator, cycleType, status]
+      properties:
+        id:
+          type: string
+          example: "CIP-2026-012"
+        date:
+          type: string
+          example: "2026-09-29"
+        equipment:
+          type: string
+          example: "Fermentador F1"
+        operator:
+          type: string
+          example: "Julio Cristancho"
+        cycleType:
+          type: string
+          example: "Completo 3 Pasos"
+        status:
+          type: string
+          example: "CONFORME"
+
+    InvimaProgram:
+      type: object
+      required: [id, number, name, regulatoryBasis]
+      properties:
+        id:
+          type: string
+          example: "prog-01-agua"
+        number:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: "Programa de Control de Agua Potable"
+        regulatoryBasis:
+          type: string
+          example: "Resolución 2674 de 2013 y Decreto 2115 de 2007"
+
+    WaterControlLog:
+      type: object
+      required: [id, date, time, location, chlorineMgL, ph, complies, verifiedBy]
+      properties:
+        id:
+          type: string
+          example: "WLOG-412"
+        date:
+          type: string
+          format: date
+          example: "2026-09-29"
+        time:
+          type: string
+          example: "07:30"
+        location:
+          type: string
+          example: "Llave de Maceración (Muela)"
+        chlorineMgL:
+          type: number
+          example: 1.20
+        ph:
+          type: number
+          example: 7.20
+        complies:
+          type: string
+          enum: [SI, NO]
+          example: "SI"
+        verifiedBy:
+          type: string
+          example: "Ing. Julio Roberto Cristancho"
+        notes:
+          type: string
+          example: "Parámetros conformes Decreto 2115."
+
+    ProblemDetails:
+      type: object
+      required: [type, title, status, detail]
+      properties:
+        type:
+          type: string
+          format: uri
+          example: "https://cervecerianorta.com/errors/invalid-batch"
+        title:
+          type: string
+          example: "Parámetros de lote inválidos"
+        status:
+          type: integer
+          example: 400
+        detail:
+          type: string
+          example: "El tanque seleccionado no cuenta con capacidad suficiente o se encuentra en estado CIP_Pendiente."
+        instance:
+          type: string
+          example: "/api/v1/batches"
+
+  responses:
+    ProblemDetails400:
+      description: Solicitud incorrecta bajo estándar RFC 7807
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetails'

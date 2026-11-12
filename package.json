@@ -1,0 +1,18 @@
+{
+  "name": "cerveceria-norta-os",
+  "version": "5.0.0",
+  "description": "Plataforma Next.js de Gesti\u00f3n Cervecera NORTA OS - Enterprise Suite 5.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3000",
+    "build": "next build",
+    "start": "next start -p 3000"
+  },
+  "dependencies": {
+    "firebase": "^10.13.2",
+    "lucide-react": "^0.441.0",
+    "next": "^14.2.15",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  }
+}

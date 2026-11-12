@@ -1,0 +1,2320 @@
+// ==========================================================================
+// CERVECERÍA NORTA - DATA ENGINE & ENTERPRISE ARCHITECTURE SEED (V5.0)
+// ==========================================================================
+
+const INITIAL_BREWERY_DATA = {
+  // Configuración general de Cervecería NORTA
+  info: {
+    name: "NORTA",
+    tagline: "Fuerza silenciosa • Calma con carácter • Aventura interior",
+    nit: "901.482.930-4",
+    location: "Planta Principal - Km 4 Vía Sabana Norte",
+    capacityMonthlyLiters: 15000,
+    generalManager: "Cristian Fonseca",
+    commercialManager: "Iván Ahumada",
+    financialManager: "Eduardo Ariza",
+    productionManager: "Yesid Ariza",
+    headBrewer: "Pablo Cerón",
+    complianceOfficer: "Julio Roberto Cristancho B."
+  },
+
+  // Manual e Identidad de Marca NORTA (Brand Book Digital Oficial)
+  brandIdentity: {
+    primaryTypography: "Cinzel / Libre Baskerville (Títulos Épicos & Manifiesto)",
+    secondaryTypography: "Lato (Cuerpo Analítico & Datos)",
+    codeTypography: "JetBrains Mono (Metrología & Trazabilidad)",
+    manifesto: "Fuerza silenciosa • Calma con carácter • Aventura interior",
+    manifestoLong: "Forjada en la meseta de la Sabana Norte, Cervecería NORTA nace de una devoción austera e innegociable por la verdad del oficio cervecero. Entendemos el frío no como un obstáculo, sino como un crisol de paciencia biológica. Nuestras cervezas no gritan: se asientan en la copa con la calma imperturbable de las cordilleras y la densidad de las materias primas nobles. Cada receta es una expedición hacia el carácter puro, donde el agua de manantial, los cereales seleccionados y los lúpulos de alta fidelidad dialogan en silencio para despertar el espíritu de aventura interior.",
+
+    // Fundamentos Estratégicos & Filosofía Corporativa Oficial NORTA
+    
+    // El Arte de la Elaboración Oficial (Grain-to-Glass NORTA)
+    craftsmanship: {
+      motto: "Proceso Ancestral, Técnica Moderna",
+      intro: "En NORTA fusionamos sabiduría tradicional nórdica con precisión contemporánea. Cada lote se elabora en pequeñas cantidades, supervisando personalmente cada fase del proceso. Seleccionamos maltas europeas premium, lúpulos aromáticos y levaduras especializadas. Nuestro método respeta los tiempos naturales de fermentación y maduración, sin prisas ni compromisos. El resultado: cervezas de complejidad excepcional que honran siglos de tradición cervecera.",
+      image: "./assets/arte_elaboracion_norta.jpg",
+      phases: [
+        {
+          num: "01",
+          title: "Selección de Ingredientes Nobles",
+          desc: "Maltas escandinavas y continentales seleccionadas, lúpulos nobles en flor fresca y agua mineral pura tratada iónicamente según Decreto 2115.",
+          icon: "🌾",
+          badge: "Materia Prima 100% Pura",
+          temp: "Agua Sabana Desmineralizada"
+        },
+        {
+          num: "02",
+          title: "Maceración Artesanal Escalonada",
+          desc: "Control micrométrico de temperatura en infusión escalonada para extraer el perfil enzimático exacto de maltas base y especiales.",
+          icon: "🔥",
+          badge: "Infusión 64°C - 67.5°C",
+          temp: "Rendimiento Brewhouse 88%"
+        },
+        {
+          num: "03",
+          title: "Fermentación Natural & Control de Frío",
+          desc: "Levaduras seleccionadas nórdicas y kveik en fermentación limpia, lenta y a baja temperatura para preservar ésteres frutales delicados.",
+          icon: "🫧",
+          badge: "Cinética Lenta sin Químicos",
+          temp: "Control Térmico ±0.2°C"
+        },
+        {
+          num: "04",
+          title: "Maduración Paciente en Bodega",
+          desc: "Guarda prolongada de 21 a 45 días a 0°C. El reposo en frío permite la clarificación biológica espontánea y el redondeo de los taninos.",
+          icon: "❄️",
+          badge: "21 a 45 Días de Guarda",
+          temp: "Cero Aceleradores Industriales"
+        },
+        {
+          num: "05",
+          title: "Embotellado Selectivo con Purga CO2",
+          desc: "Envasado isobárico con contrapresión de CO2 estéril y sellado de alta hermeticidad. Cada botella cuenta con trazabilidad total de lote.",
+          icon: "🏺",
+          badge: "Trazabilidad Lote x Lote",
+          temp: "Oxígeno Disuelto < 30 ppb"
+        }
+      ]
+    },
+
+    // Valores Rectores Canónicos NORTA (Fuente: Gamma Site Oficial)
+    coreValuesGamma: [
+      {
+        name: "Resiliencia",
+        desc: "Como el norte que permanece firme ante cualquier tormenta, nuestras cervezas representan la fortaleza de quienes se reinventan y perseveran. Cada botella es un tributo a la capacidad de levantarse.",
+        icon: "🛡️",
+        color: "#0e2334"
+      },
+      {
+        name: "Autenticidad",
+        desc: "Elaboramos cada cerveza respetando procesos ancestrales y técnicas artesanales. Sin atajos, sin artificios. Solo ingredientes naturales y dedicación absoluta al arte cervecero tradicional.",
+        icon: "🌲",
+        color: "#3a452d"
+      },
+      {
+        name: "Excelencia",
+        desc: "La perfección está en los detalles. Desde la selección de maltas hasta el diseño de cada etiqueta, buscamos la máxima calidad en cada aspecto de NORTA. Lo bien hecho es nuestra firma.",
+        icon: "✨",
+        color: "#b89764"
+      },
+      {
+        name: "Propósito",
+        desc: "Más que una cerveza, somos una filosofía de vida. Para quienes tienen claro su rumbo, valoran las experiencias exclusivas y celebran cada momento con carácter e intención.",
+        icon: "🧭",
+        color: "#4d3720"
+      }
+    ],
+
+    // Audiencia y Filosofía ("Para Quienes Valoran lo Auténtico")
+    audienceProfiles: [
+      {
+        id: "aud-1",
+        title: "Profesionales Independientes",
+        tag: "Liderazgo & Dirección",
+        range: "25 a 50 años",
+        desc: "Líderes con mentalidad emprendedora y carácter fuerte. Personas que inspiran y toman decisiones con convicción, que no siguen modas pasajeras sino rumbos propios.",
+        icon: "🧭"
+      },
+      {
+        id: "aud-2",
+        title: "Amantes de lo Exclusivo",
+        tag: "Experiencia Selecta",
+        range: "Consumo Consciente",
+        desc: "Buscan experiencias selectas y productos con historia. Aprecian el esfuerzo detrás de cada detalle y valoran la calidad sobre la cantidad.",
+        icon: "✨"
+      },
+      {
+        id: "aud-3",
+        title: "Conocedores del Sabor",
+        tag: "Criterio Sommelier",
+        range: "Paladares Educados",
+        desc: "Distingue la diferencia entre lo artesanal y lo industrial. Para quienes la cerveza es un arte de paciencia y no solo una bebida de paso.",
+        icon: "🍺"
+      }
+    ],
+
+    // Momentos NORTA
+    brandMoments: [
+      {
+        title: "Encuentros Memorables",
+        desc: "Comparte NORTA con quienes aprecian las conversaciones profundas y los brindis significativos. Para reuniones que trascienden lo ordinario.",
+        icon: "🥂",
+        setting: "Celebraciones íntimas y tertulias de valor"
+      },
+      {
+        title: "Pausas Reflexivas",
+        desc: "Momentos de introspección merecen una cerveza a la altura. NORTA te acompaña en tus instantes de claridad y templanza interior.",
+        icon: "🏔️",
+        setting: "Introspección, calma y lectura"
+      },
+      {
+        title: "Experiencias Gastronómicas",
+        desc: "Maridar con quesos de guarda, carnes ahumadas, pescados de aguas frías o postres complejos. Cada variedad NORTA eleva la alta cocina.",
+        icon: "🍽️",
+        setting: "Maridaje sommelier de autor"
+      }
+    ],
+
+    // Diseño con Propósito
+    designPurpose: {
+      title: "Diseño con Propósito & Simbolismo Ancestral",
+      statement: "Cada elemento visual de NORTA está cuidadosamente diseñado para reflejar nuestros valores. La estética minimalista nórdica se encuentra con simbolismo ancestral: runas, brújulas y patrones geométricos que evocan la navegación vikinga y la imponencia andina.",
+      paletteNote: "Nuestra paleta combina tonos tierra con azul profundo y acentos de verde nórdico / glacial y dorado tenue. Las etiquetas texturizadas y la tipografía robusta transmiten solidez y autenticidad. Todo en NORTA comunica carácter, desde el primer vistazo hasta el último sorbo."
+    },
+
+    corporatePhilosophy: {
+      author: "Ing. Julio Roberto Cristancho B.",
+      originStory: {
+        title: "El Espíritu del Norte",
+        statement1: "NORTA nace de la fuerza ancestral del norte, ese punto cardinal que representa más que una dirección: simboliza propósito, equilibrio y resiliencia. Como el viento frío que guía a los navegantes, nuestra cerveza rinde homenaje a quienes enfrentan la adversidad con firmeza y se reinventan sin perder su rumbo.",
+        statement2: "Inspirada en tradiciones nórdicas milenarias, cada botella cuenta una historia de autenticidad y carácter. Para quienes aprecian lo genuino, lo elaborado con dedicación y lo que trasciende el simple sabor."
+      },
+      mission: {
+        title: "Misión Institucional",
+        question: "La misión responde al presente: ¿Por qué existe Norta y qué hace?",
+        statement: "Creamos experiencias y momentos memorables donde una cerveza artesanal se convierte en el puente para valorar el verdadero significado de la amistad.",
+        components: [
+          { label: "Propósito Central", question: "¿Cuál es la razón de ser de Norta? ¿Qué necesidad satisface?", answer: "Crear experiencias y momentos memorables en torno a una cerveza artesanal." },
+          { label: "Clientes Objetivo", question: "¿A quién sirve Norta? ¿Quién se beneficia directamente?", answer: "Comunidad, sociedad y amigos." },
+          { label: "Oferta de Valor", question: "¿Qué productos o servicios ofrecemos y qué la hace diferente?", answer: "Cerveza artesanal de calidad superior, buen precio y fácil acceso para vivir momentos memorables." },
+          { label: "Alcance Sectorial", question: "¿Dónde operamos y en qué industria nos posicionamos?", answer: "Industria cervecera artesanal independiente, con identidad territorial andina y proyección nacional." }
+        ]
+      },
+      vision: {
+        title: "Visión Proyectada",
+        question: "La visión proyecta el futuro: ¿Qué aspira ser Norta?",
+        statement: "Reivindicar la autenticidad de la cerveza artesanal como expresión socio-cultural, catalizadora de momentos únicos, donde la amistad y la autenticidad son protagonistas.",
+        aspirationalGoal: "Reivindicar la cerveza artesanal como auténtica expresión cultural (Diferenciación, calidad y originalidad).",
+        desiredImpact: "Posicionándonos en un mercado que valore la calidad de un producto auténtico con precio accesible para un nicho medio.",
+        futurePerception: [
+          { stakeholder: "Clientes", perception: "Innovación de cerveza artesanal (Diferenciación, calidad y originalidad)." },
+          { stakeholder: "Sociedad", perception: "Símbolo de amistad, cultura de encuentro y disfrute responsable." },
+          { stakeholder: "Colaboradores", perception: "Proyecto de vida, desarrollo profesional y hacer con devoción lo que nos apasiona." }
+        ],
+        inspiration: "Proyecto de vida, hacer lo que nos gusta con excelencia técnica.",
+        viability: "Ambiciosa pero alcanzable: la disciplina metrológica y la coherencia dependen de nuestro rigor diario."
+      },
+      guidingPrinciples: [
+        { name: "Integridad", desc: "Coherencia innegociable entre lo que pensamos y hacemos.", icon: "⚖️" },
+        { name: "Responsabilidad", desc: "Asumimos con madurez las consecuencias de nuestras acciones.", icon: "🛡️" },
+        { name: "Respeto", desc: "Reconocemos la dignidad de cada persona: socio, colaborador, cliente y proveedor.", icon: "🤝" },
+        { name: "Colaboración", desc: "Trabajamos en conjunto para lograr nuestros objetivos comunes.", icon: "🌱" }
+      ],
+      coreValues: [
+        { name: "Innovación", desc: "En Norta creamos soluciones nuevas, relevantes y sostenibles para nuestro producto y nuestro trabajo diario.", icon: "💡" },
+        { name: "Empatía", desc: "Conectamos con las personas con escucha activa, sensibilidad relacional y toma de decisiones conscientes.", icon: "❤️" },
+        { name: "Compromiso", desc: "Cumplimos con las responsabilidades y objetivos con acciones confiables, consistentes y orientadas al logro colectivo.", icon: "🎯" },
+        { name: "Trabajo en Equipo", desc: "Colaboramos entre nosotros en la construcción de relaciones basadas en confianza y respeto mutuo, respondiendo a las responsabilidades asignadas y ayudando en las tareas que construyen a Norta como empresa.", icon: "👥" }
+      ]
+    },
+    colors: [
+      {
+        name: "Azul Profundo",
+        hex: "#0e2334",
+        rgb: "rgb(14, 35, 52)",
+        pantone: "539 C",
+        usage: "Fondos institucionales, acentos fríos, maduración en bodega, solemnidad andina",
+        symbolism: "El cielo nocturno sobre el páramo andino, agua pura de manantial y la calma de las alturas."
+      },
+      {
+        name: "Marrón Tierra",
+        hex: "#4d3720",
+        rgb: "rgb(77, 55, 32)",
+        pantone: "4625 C",
+        usage: "Maltas tostadas, barricas de roble, estructuras rústicas, calidez y solidez",
+        symbolism: "Tierra fértil de cultivo, corteza de roble centenario y la caramelización profunda de la cebada."
+      },
+      {
+        name: "Verde Musgo",
+        hex: "#3a452d",
+        rgb: "rgb(58, 69, 45)",
+        pantone: "5743 C",
+        usage: "Lúpulos frescos, certificación biológica, naturaleza indómita e inocuidad",
+        symbolism: "Conos de lúpulo fresco en floración, sotobosque alpino y vitalidad botánica."
+      },
+      {
+        name: "Dorado Tenue",
+        hex: "#b89764",
+        rgb: "rgb(184, 151, 100)",
+        pantone: "7509 C",
+        usage: "Acentos de prestigio, tipografía titular, sellos de lacre, coronas de espuma",
+        symbolism: "La corona de espuma brillante, la cebada dorada madura al atardecer y la nobleza del maestro cervecero."
+      },
+      {
+        name: "Negro Carbón",
+        hex: "#1d1d1b",
+        rgb: "rgb(29, 29, 27)",
+        pantone: "Black 6 C",
+        usage: "Fondos de alto contraste, tipografía institucional sólida, roca volcánica",
+        symbolism: "Malta torrefacta a fuego lento, basalto de cordillera y elegancia sobria innegociable."
+      },
+      {
+        name: "Blanco Papiro",
+        hex: "#f7f4ed",
+        rgb: "rgb(247, 244, 237)",
+        pantone: "Warm Gray 1 C",
+        usage: "Fondo principal de lectura, tarjetas apergaminadas, fichas de cata y precisión",
+        symbolism: "Pergamino de bitácora cervecera, transparencia de proceso y luz analítica."
+      },
+      {
+        name: "Verde Glacial / Aurora",
+        hex: "#98d4c9",
+        rgb: "rgb(152, 212, 201)",
+        pantone: "565 C",
+        usage: "Pliegos de 'El Espíritu del Norte', acentos boreales, ediciones nórdicas y frescura",
+        symbolism: "Las luces de la aurora boreal sobre los fiordos y cordilleras, la calma del viento frío y la resiliencia ancestral del norte."
+      }
+    ],
+    typographySpec: [
+      {
+        family: "Cinzel",
+        role: "Títulos Heráldicos & Monumentales (H1, H2, Emblema)",
+        weights: "600 Bold, 700 Extrabold, 900 Black",
+        concept: "Inspirada en las inscripciones clásicas en piedra romana, evoca nobleza, autoridad intemporal y la fuerza inmutable de la roca andina."
+      },
+      {
+        family: "Libre Baskerville",
+        role: "Epígrafes, Citas de Autor & Manifiesto",
+        weights: "400 Regular, 400 Italic, 700 Bold",
+        concept: "Elegancia editorial serif de tradición inglesa; aporta serenidad, cadencia literaria y respeto por la historia cervecera artesanal."
+      },
+      {
+        family: "Lato",
+        role: "Cuerpo Analítico, Dashboards & Interfaz",
+        weights: "300 Light, 400 Regular, 700 Bold",
+        concept: "Humanista pero geométrica, diseñada con proporciones armónicas que garantizan máxima legibilidad técnica tanto en pantalla como en etiquetas físicas."
+      },
+      {
+        family: "JetBrains Mono",
+        role: "Metrología, Trazabilidad & Telemetría",
+        weights: "400 Regular, 600 SemiBold",
+        concept: "Monoespaciada de alta precisión para registros de lote, gravedad específica OG/FG, lecturas de pH y metrología INVIMA de laboratorio."
+      }
+    ],
+    pillars: [
+      {
+        id: "p1",
+        title: "Fuerza silenciosa",
+        subtitle: "Magnitud sin estridencias",
+        concept: "La serenidad y magnitud de las cumbres del norte. Cervezas que no necesitan artificios para imponer su presencia; su profundidad y estructura hablan por sí mismas.",
+        image: "./assets/brand_moodboard.jpg"
+      },
+      {
+        id: "p2",
+        title: "Calma con carácter",
+        subtitle: "Equilibrio denso y memorable",
+        concept: "Cervezas con cuerpo consistente, complejidad fermentativa y espuma densa y aterciopelada que permanece en la copa como testimonio de maduración paciente.",
+        image: "./assets/beers.jpg"
+      },
+      {
+        id: "p3",
+        title: "Naturaleza indómita",
+        subtitle: "Pureza botánica de origen",
+        concept: "Ingredientes botánicos puros, agua de manantial de la sabana tratada con precisión iónica y el llamado perenne de los senderos abiertos y la cordillera andina.",
+        image: "./assets/brand_moodboard.jpg"
+      },
+      {
+        id: "p4",
+        title: "Aventura interior",
+        subtitle: "Exploración sensorial continua",
+        concept: "La brújula artesanal de exploración cervecera. Cada trago es un viaje organoléptico hacia perfiles sensoriales inesperados, equilibrados y profundos.",
+        image: "./assets/compass.jpg"
+      },
+      {
+        id: "p5",
+        title: "Elegancia terrosa",
+        subtitle: "Materia viva y diseño sobrio",
+        concept: "Embotellado en vidrio ámbar y gres cerámico, texturas minerales, sellos de autenticidad en lacre y sobriedad gráfica de nivel editorial europeo.",
+        image: "./assets/brand_moodboard.jpg"
+      },
+      {
+        id: "p6",
+        title: "Raíces del norte",
+        subtitle: "Herencia y devoción artesanal",
+        concept: "Pizarra negra, madera añejada, respeto por los métodos tradicionales reinterpretados con rigor metrológico y maestría en el altiplano andino.",
+        image: "./assets/brand_moodboard.jpg"
+      }
+    ],
+    decalogo: [
+      { num: "01", title: "Paciencia Fermentativa", desc: "El tiempo no se apresura. Respetamos los 21 a 45 días de maduración en frío que cada estilo demanda para redondear sus aristas de manera natural." },
+      { num: "02", title: "Pureza Hidráulica", desc: "Agua de manantial de la Sabana Norte, perfilada iónicamente mineral a mineral para cada receta bajo estricto cumplimiento del Decreto 2115." },
+      { num: "03", title: "Granos Nobles de Origen", desc: "100% malta de cebada, trigo y avena de grado cervecero de primer orden. Cero sucedáneos, jarabes de maíz ni aditivos industriales." },
+      { num: "04", title: "Lúpulos Criogénicos T-90", desc: "Selección de conos y pellets criogénicos preservados rigurosamente bajo cadena de frío para capturar los aceites esenciales más volátiles." },
+      { num: "05", title: "Clarificación por Gravedad y Frío", desc: "No filtramos químicamente ni utilizamos agentes sintéticos. La limpidez se logra mediante decantación natural a 0°C en tanques de guarda." },
+      { num: "06", title: "Trazabilidad Grain-to-Glass", desc: "Cada botella y barril cuenta con código de lote auditable que permite verificar la fecha de molienda, curva de fermentación y operador a cargo." },
+      { num: "07", title: "Asepsia y Protocolos POES", desc: "Higiene de estándar quirúrgico en tanques, mangueras y válvulas con ciclos CIP de sosa cáustica, ácido peracético y sanitización con vapor vivo." },
+      { num: "08", title: "Rigor Estilístico con Firma Propia", desc: "Respeto a las pautas BJCP en balance y atenuación, enriquecidas con toques de autor andino como nibs de cacao criollo, café arábica y especias locales." },
+      { num: "09", title: "Sostenibilidad de Planta Circular", desc: "Reutilización del 100% del bagazo de malta para alimentación de ganadería campesina de la sabana y recirculación térmica del calor de cocción." },
+      { num: "10", title: "Comunidad y Conversación", desc: "Entendemos la cerveza no como un producto de consumo masivo, sino como un ritual de pausa, camaradería sincera y contemplación serena." }
+    ],
+    packagingConcepts: [
+      {
+        title: "Botellas Cerámicas & Vidrio Ámbar Pesado",
+        type: "Ediciones de Guarda (Cumbre, Niebla)",
+        desc: "Botellas de 500ml y 750ml en vidrio ámbar oscuro UV-proof y botellas de gres cerámico selladas con tapón de corcho y lacre negro carbón para añejamiento prolongado.",
+        texture: "Vidrio grueso con grabado en relieve y serigrafía mate al horno en oro pálido.",
+        image: "./assets/brand_moodboard.jpg"
+      },
+      {
+        title: "Latas Craft Sleek con Barniz Táctil",
+        type: "Línea Fresca (Montana, Tempestad, Niebla, Cumbre, Máxima, Tradicional)",
+        desc: "Aluminio 100% reciclable de 473ml (Pinta Americana) con acabado mate soft-touch y acentos en dorado tenue brillante sobre base negro carbón.",
+        texture: "Micro-textura apergaminada resistente a la condensación con barrera total contra la luz y el oxígeno.",
+        image: "./assets/beers.jpg"
+      },
+      {
+        title: "Cristalería de Precisión Aromática",
+        type: "Servicio Sommelier de la Casa",
+        desc: "Copas Teku de cristal soplado para IPAs y estilos lupulados, cálices belgas pesados para Stouts y vasos pilsner cónicos para blonde ales doradas.",
+        texture: "Borde fino con corte láser y serigrafía de la brújula NORTA a 35ml de la boca.",
+        image: "./assets/compass.jpg"
+      }
+    ]
+  },
+
+  // 1. REPOSITORIO DOCUMENTAL INTELIGENTE (DOCUMENT MANAGEMENT SYSTEM - DMS / BPM / INVIMA)
+  documentRepository: [
+    {
+      id: "DOC-INV-001",
+      title: "Registro Sanitario INVIMA - NORTA Cumbre (Imperial Stout)",
+      category: "Registros INVIMA",
+      fileName: "RSA-0008761-2021_Furia.pdf",
+      version: "v2.1",
+      uploadDate: "2023-09-28",
+      expiryDate: "2026-09-28",
+      linkedBatch: "LOT-2026-087",
+      status: "Alerta Renovación (46 días)",
+      verifiedBy: "Yesid Ariza",
+      fileSize: "2.4 MB",
+      fileType: "application/pdf"
+    },
+    {
+      id: "DOC-COA-042",
+      title: "Certificado de Análisis (COA) Malta Pale Ale 2-Row",
+      category: "Certificados COA Insumos",
+      fileName: "COA_MalteriaAndina_Lote42.pdf",
+      version: "v1.0",
+      uploadDate: "2026-08-01",
+      expiryDate: "2027-08-01",
+      linkedBatch: "LOT-2026-088",
+      status: "Vigente & Aprobado",
+      verifiedBy: "Ing. Julio Roberto Cristancho",
+      fileSize: "1.1 MB",
+      fileType: "application/pdf"
+    },
+    {
+      id: "DOC-BPM-001",
+      title: "Manual Integrado de BPM & POES (Resolución 2674/2013)",
+      category: "Manuales BPM & POES",
+      fileName: "Manual_BPM_NORTA_2026.pdf",
+      version: "v3.0",
+      uploadDate: "2026-01-10",
+      expiryDate: "2027-01-10",
+      linkedBatch: "Todos los Lotes",
+      status: "Vigente & Aprobado",
+      verifiedBy: "Cristian Fonseca",
+      fileSize: "4.8 MB",
+      fileType: "application/pdf"
+    },
+    {
+      id: "DOC-EMP-012",
+      title: "Carnet de Manipulación Higiénica de Alimentos - Cristian Fonseca",
+      category: "Carnets Sanitarios Personal",
+      fileName: "Carnet_Sanitario_Cristian_2026.pdf",
+      version: "v1.0",
+      uploadDate: "2025-09-15",
+      expiryDate: "2026-09-15",
+      linkedBatch: "Planta Operativa",
+      status: "Próximo a Vencer (33 días)",
+      verifiedBy: "Cristian Fonseca",
+      fileSize: "680 KB",
+      fileType: "application/pdf"
+    }
+  ],
+
+  // 2. RECETAS MAESTRAS DE NORTA (CATÁLOGO OFICIAL DE AUTOR)
+  recipes: [
+    {
+      id: "REC-MONTANA-01",
+      name: "NORTA Montana",
+      style: "Amber Mountain Ale / Cerveza de Cima",
+      targetVolumeL: 1000,
+      og: 1.050,
+      fg: 1.013,
+      abv: 4.8,
+      ibu: 28,
+      srmColor: 16.0,
+      mashTemp: "66.0 °C (60 min)",
+      boilTimeMin: 60,
+      brandPillar: "Fuerza y Poder Natural",
+      liquidColor: "#b2541f",
+      image: "./assets/cerveza_montana.jpg",
+      glassware: "Copa Teku o Cáliz de Montana",
+      servingTemp: "6°C - 8°C",
+      pairing: "Carnes a la brasa, embutidos artesanales de cordillera, quesos semicurados y guisos tradicionales.",
+      intensity: { malt: 7, hops: 5, body: 6, roast: 3 },
+      sensoryTags: ["Fuerte y Robusta", "Cima Nevada", "Cereal Tostado", "Carácter Andino", "Poder Natural"],
+      grains: [
+        { name: "Malta Escandinava Pale Ale", percentage: 75, kg: 175, rawId: "RAW-01" },
+        { name: "Malta Caramelo Amber 60L", percentage: 15, kg: 35, rawId: "RAW-03" },
+        { name: "Malta Munich Type I", percentage: 10, kg: 23, rawId: "RAW-02" }
+      ],
+      hops: [
+        { name: "Saaz (Hervor 60m)", timing: "Hervor 60 min", g: 850, rawId: "RAW-07" },
+        { name: "East Kent Goldings (Whirlpool)", timing: "Whirlpool 10 min", g: 600, rawId: "RAW-07" }
+      ],
+      yeast: "Levadura Nórdica de Guarda Fría / 21 días de maduración",
+      essence: "Fuerte y Robusta, como una cima nevada. Habla de carácter, altura y poder natural. En tierras agrestes del norte, escalar una cumbre no era solo un reto físico sino una prueba de carácter y grandeza. Las cimas nevadas eran el símbolo de quienes se elevan por encima de lo común. Esta cerveza encarna ese espíritu: fuerte, robusto y con un poder natural que marca el camino.",
+      sensoryDescription: "Cuerpo medio-robusto con hermosa tonalidad ámbar cobriza y corona blanca densa. Notas a corteza de pan tostado, frutos secos, sutil toque de miel de bosque y amargor herbal equilibrado que deja una sensación limpia y persistente."
+    },
+    {
+      id: "REC-TEMPESTAD-01",
+      name: "NORTA Tempestad",
+      style: "Storm Cold IPA / Chispeante & Audaz",
+      targetVolumeL: 1000,
+      og: 1.054,
+      fg: 1.012,
+      abv: 5.5,
+      ibu: 45,
+      srmColor: 7.0,
+      mashTemp: "64.5 °C (60 min)",
+      boilTimeMin: 60,
+      brandPillar: "Intensa e Indomable",
+      liquidColor: "#dfa125",
+      image: "./assets/cerveza_tempestad.jpg",
+      glassware: "Copa Sommelier Craft o Tulipa",
+      servingTemp: "4°C - 6°C",
+      pairing: "Comida especiada, ceviches frescos, hamburguesas de autor, tacos de cordero y quesos de corteza lavada.",
+      intensity: { malt: 5, hops: 8, body: 6, roast: 1 },
+      sensoryTags: ["Intensa", "Chispeante", "Indomable", "Lúpulos Nobles", "Impacto Memorable"],
+      grains: [
+        { name: "Malta Pilsner Escandinava Extra Pale", percentage: 80, kg: 176, rawId: "RAW-02" },
+        { name: "Malta de Trigo Blanco", percentage: 12, kg: 26, rawId: "RAW-03" },
+        { name: "Copos de Avena", percentage: 8, kg: 18, rawId: "RAW-03" }
+      ],
+      hops: [
+        { name: "Centennial (Hervor)", timing: "Hervor 60 min", g: 900, rawId: "RAW-06" },
+        { name: "Citra & Mosaic (Whirlpool)", timing: "Whirlpool 80°C", g: 2000, rawId: "RAW-05" },
+        { name: "Simcoe (Dry Hop en frío)", timing: "Dry Hop Día 5", g: 3000, rawId: "RAW-06" }
+      ],
+      yeast: "Lager / Kveik Híbrida en fermentación fría (14°C) para máxima frescura chispeante",
+      essence: "Intensa, Chispeante, algo Indomable. Deja huella desde el primer trago. Las tempestades del norte no piden permiso. Son intensas y dejan una impresión que no se olvida. Esta cerveza chispeante y adictiva representa la osadía de quién no teme al impacto. Es una bebida que desafía los sentidos y enciende el deseo de repetir la experiencia.",
+      sensoryDescription: "Dorado eléctrico brillante con espuma viva. Explosión aromática de toronja, resina de pino y frutas tropicales ácidas. En boca es electrizante, chispeante, con un final seco y un amargor audaz que resuena en el paladar."
+    },
+    {
+      id: "REC-NIEBLA-01",
+      name: "NORTA Niebla",
+      style: "Hazy Wheat & Pale Ale / Bruma Nórdica",
+      targetVolumeL: 1000,
+      og: 1.060,
+      fg: 1.013,
+      abv: 6.2,
+      ibu: 24,
+      srmColor: 5.0,
+      mashTemp: "66.5 °C (60 min)",
+      boilTimeMin: 60,
+      brandPillar: "Elegante y Misteriosa",
+      liquidColor: "#eedc82",
+      image: "./assets/cerveza_niebla.jpg",
+      glassware: "Vaso Flauta Alto o Copa Teku",
+      servingTemp: "5°C - 7°C",
+      pairing: "Pescados blancos, salmón ahumado, quesos de cabra frescos, risotto de hongos y panadería de masa madre.",
+      intensity: { malt: 6, hops: 5, body: 7, roast: 1 },
+      sensoryTags: ["Elegante", "Suave y Misteriosa", "Bruma Velada", "Sedosa", "Autoridad Serena"],
+      grains: [
+        { name: "Malta Pale Ale Nórdica", percentage: 55, kg: 135, rawId: "RAW-01" },
+        { name: "Trigo Malteado Claro", percentage: 30, kg: 74, rawId: "RAW-03" },
+        { name: "Copos de Avena Suaves", percentage: 15, kg: 37, rawId: "RAW-03" }
+      ],
+      hops: [
+        { name: "Hallertau Blanc", timing: "Hervor 60 min", g: 650, rawId: "RAW-07" },
+        { name: "Nelson Sauvin & Cascade", timing: "Whirlpool 15 min", g: 1800, rawId: "RAW-05" }
+      ],
+      yeast: "Levadura Witbier / Hazy Ale de esteres sedosos y maduración a 1°C",
+      essence: "Elegante, Suave y Misteriosa. Una cerveza con sutileza y profundidad. La niebla suave pero envolvente, es símbolo de lo que se impone sin gritar. En el norte, los verdaderos líderes no siempre eran los más ruidosos, sino los más firmes en su visión. Esta cerveza elegante y profunda, representa esa autoridad serena, esa sofisticación que se percibe en cada trago.",
+      sensoryDescription: "Tonalidad pajiza opalescente con velo etéreo de bruma natural y corona de espuma cremosa y aterciopelada. Aromas sutiles a uva blanca, lichi, corteza de trigo y flores silvestres. Textura en boca sedosa, envolvente y de una elegancia silenciosa imborrable."
+    },
+    {
+      id: "REC-CUMBRE-01",
+      name: "NORTA Cumbre",
+      style: "Imperial Golden Ale • La Insignia NORTA",
+      targetVolumeL: 1000,
+      og: 1.066,
+      fg: 1.014,
+      abv: 6.8,
+      ibu: 36,
+      srmColor: 9.0,
+      mashTemp: "65.0 °C (75 min)",
+      boilTimeMin: 75,
+      brandPillar: "Excelencia & Visión",
+      liquidColor: "#e6b022",
+      image: "./assets/cerveza_cumbre.jpg",
+      glassware: "Copa Cáliz Dorada o Snifter de Autor",
+      servingTemp: "8°C - 10°C",
+      pairing: "Cortes nobles de res, quesos curados de larga guarda, magret de pato, postres con frutos secos y miel de páramo.",
+      intensity: { malt: 8, hops: 7, body: 8, roast: 2 },
+      sensoryTags: ["La Insignia", "Excelsa y Dorada", "Memorable", "Cima de Excelencia", "Legado de Honor"],
+      grains: [
+        { name: "Malta Pilsner Escandinava Superior", percentage: 78, kg: 205, rawId: "RAW-02" },
+        { name: "Malta Munich Gold", percentage: 14, kg: 37, rawId: "RAW-02" },
+        { name: "Malta Aromatic / Melano", percentage: 8, kg: 21, rawId: "RAW-03" }
+      ],
+      hops: [
+        { name: "Saaz Select (Noble)", timing: "Hervor 60 min", g: 1200, rawId: "RAW-07" },
+        { name: "Styrian Goldings", timing: "Hervor 20 min", g: 900, rawId: "RAW-07" },
+        { name: "Amarillo (Aroma Sublime)", timing: "Whirlpool", g: 1400, rawId: "RAW-05" }
+      ],
+      yeast: "Levadura Monástica / Abadía Nórdica de alta atenuación y guarda prolongada de 45 días",
+      essence: "Es la Insignia. Una cerveza que representa lo más alto, lo más refinado. Habla de excelencia y visión. La cumbre no es solo el punto más alto: es la meta, el orgullo, el legado. En NORTA esta cerveza representa lo más refinado, lo que define la identidad y eleva el estándar. Como una insignia conquistada con honor, esta variedad es la esencia de la marca: Excelsa, Dorada y Memorable.",
+      sensoryDescription: "Oro resplandeciente con destellos de sol naciente y corona majestuosa de espuma blanca. Aromas ricos a miel de brezo, damasco deshidratado, pera madura y especias nobles. En boca es densa, cálida, de complejidad soberbia y un final largo y aristocrático que consagra la cumbre del arte cervecero."
+    },
+    {
+      id: "REC-MAXIMA-01",
+      name: "NORTA Montana",
+      style: "Double IPA High Gravity",
+      targetVolumeL: 1000,
+      og: 1.080,
+      fg: 1.015,
+      abv: 8.5,
+      ibu: 85,
+      srmColor: 14.0,
+      mashTemp: "65.5 °C (60 min)",
+      boilTimeMin: 60,
+      brandPillar: "Fuerza silenciosa",
+      liquidColor: "#df8924",
+      glassware: "Copa Teku Oficial NORTA",
+      servingTemp: "8°C - 10°C",
+      pairing: "Curry tailandés picante, carnitas de cerdo agridulces, queso Stilton añejo, pizza de pepperoni y miel picante.",
+      intensity: { malt: 6, hops: 10, body: 8, roast: 2 },
+      sensoryTags: ["Citra & Mosaic", "Maracuyá", "Mango Biche", "Pino Resinoso", "Amargor Noble"],
+      grains: [
+        { name: "Malta Pale Ale 2-Row", percentage: 78, kg: 255, rawId: "RAW-01" },
+        { name: "Malta Pilsner Premium", percentage: 12, kg: 40, rawId: "RAW-02" },
+        { name: "Copos de Avena & Trigo", percentage: 10, kg: 32, rawId: "RAW-03" }
+      ],
+      hops: [
+        { name: "Columbus (First Wort Hop)", timing: "Hervor 60 min", g: 1500, rawId: "RAW-07" },
+        { name: "Citra T-90 (Whirlpool 80°C)", timing: "Whirlpool", g: 3000, rawId: "RAW-05" },
+        { name: "Mosaic T-90 (Dry Hop Doble)", timing: "Dry Hop Día 4 & 8", g: 5000, rawId: "RAW-06" }
+      ],
+      yeast: "SafAle US-05 / Fermentación controlada a 19.0°C",
+      sensoryDescription: "Torrente aromático tropical con notas explosivas a maracuyá maduro, mango verde y resina de pino andino. Amargor limpio, punzante y noble, sostenido por una columna vertebral de maltas doradas."
+    },
+    {
+      id: "REC-TRADICIONAL-01",
+      name: "NORTA Tradicional",
+      style: "Cerveza Clásica de la Casa",
+      targetVolumeL: 1000,
+      og: 1.050,
+      fg: 1.011,
+      abv: 5.0,
+      ibu: 25,
+      srmColor: 10.0,
+      mashTemp: "66.0 °C (60 min)",
+      boilTimeMin: 60,
+      brandPillar: "Raíces del norte",
+      liquidColor: "#e8a230",
+      glassware: "Tarro Cervecero de Gres o Media Pinta",
+      servingTemp: "5°C - 7°C",
+      pairing: "Asados campesinos, chorizos artesanales, pizzas rústicas a la leña y tablas de quesos y charcutería.",
+      intensity: { malt: 6, hops: 5, body: 6, roast: 3 },
+      sensoryTags: ["Malta Munich", "Herbal Noble", "Espuma Densa", "Receta Madre", "Gran Versatilidad"],
+      grains: [
+        { name: "Malta Pilsner Premium", percentage: 80, kg: 185, rawId: "RAW-02" },
+        { name: "Malta Munich Type I", percentage: 12, kg: 28, rawId: "RAW-02" },
+        { name: "Malta Caramelo 60L", percentage: 8, kg: 19, rawId: "RAW-03" }
+      ],
+      hops: [
+        { name: "Columbus", timing: "Hervor 60m", g: 850, rawId: "RAW-07" },
+        { name: "Hallertau Mittelfrüh", timing: "Aroma 15m", g: 600, rawId: "RAW-07" }
+      ],
+      yeast: "SafAle US-05",
+      sensoryDescription: "La receta fundacional de la cervecería. Cristalina, con un tono ámbar dorado limpio y persistente espuma marfil. Equilibrio canónico entre la dulzura de cereal y el sutil amargor especiado del lúpulo europeo."
+    }
+  ],
+
+  // 3. LOTES ACTIVOS DE PRODUCCIÓN Y CURVAS FERMENTATIVAS TIME-SERIES (BEER30 / BREWW STYLE)
+  batches: [
+    {
+      id: "LOT-2026-088",
+      recipeName: "NORTA Montana",
+      style: "Double IPA / High Gravity",
+      tankId: "F-01",
+      volumeLiters: 1200,
+      brewDate: "2026-08-08",
+      targetPackDate: "2026-08-24",
+      stage: "Fermentación",
+      stageProgress: 65,
+      originalGravity: 1.072,
+      currentGravity: 1.022,
+      finalGravityTarget: 1.014,
+      currentTemp: 19.5,
+      targetTemp: 19.0,
+      abvCalculated: 6.56,
+      abvTarget: 7.5,
+      ibu: 65,
+      brewer: "Ing. Julio Roberto Cristancho",
+      status: "Activo",
+      dryHopStatus: "Programado hoy (Citra 6kg + Mosaic 4kg)",
+      notes: "Fermentación monitoreada por Ing. Julio Roberto Cristancho. Curva de fermentación constante.",
+      cogsCostPerLiter: 1.65,
+      // HISTÓRICO DIARIO DE FERMENTACIÓN (CURVAS TIME-SERIES BEER30)
+      fermentationLogs: [
+        { dayNum: 1, date: "2026-08-08", sg: 1.072, tempC: 20.0, ph: 5.20, notes: "Siembra de levadura US-05" },
+        { dayNum: 2, date: "2026-08-09", sg: 1.058, tempC: 19.8, ph: 4.85, notes: "Actividad vigorosa en trampa CO2" },
+        { dayNum: 3, date: "2026-08-10", sg: 1.042, tempC: 19.5, ph: 4.60, notes: "Atenuación rítmica regular" },
+        { dayNum: 4, date: "2026-08-11", sg: 1.030, tempC: 19.5, ph: 4.45, notes: "Disminución gradual de temperatura" },
+        { dayNum: 5, date: "2026-08-12", sg: 1.022, tempC: 19.5, ph: 4.38, notes: "Preparado para adición de Dry Hop" }
+      ],
+      maltsUsed: [
+        { name: "Malta Pale Ale 2-Row", batchLot: "MAL-AND-2026-04", qtyKg: 280 },
+        { name: "Malta Pilsner Premium", batchLot: "MAL-AND-2026-02", qtyKg: 40 }
+      ],
+      hopsUsed: [
+        { name: "Citra T-90 (Whirlpool)", batchLot: "HOP-YAK-2026-12", qtyG: 2500 },
+        { name: "Mosaic T-90 (Dry Hop)", batchLot: "HOP-YAK-2026-15", qtyG: 4000 }
+      ],
+      yeastUsed: "SafAle US-05 (Lote YST-2026-03, Gen 1)"
+    },
+    {
+      id: "LOT-2026-087",
+      recipeName: "NORTA Cumbre",
+      style: "Imperial Stout Café & Cacao",
+      tankId: "F-02",
+      volumeLiters: 800,
+      brewDate: "2026-07-28",
+      targetPackDate: "2026-08-18",
+      stage: "Maduración",
+      stageProgress: 88,
+      originalGravity: 1.085,
+      currentGravity: 1.020,
+      finalGravityTarget: 1.020,
+      currentTemp: 4.0,
+      targetTemp: 3.5,
+      abvCalculated: 8.53,
+      abvTarget: 8.5,
+      ibu: 60,
+      brewer: "Cristian Fonseca",
+      status: "Activo",
+      dryHopStatus: "Infusión Cacao Nibs & Café Geisha completada",
+      notes: "Gravedad final alcanzada. Madurando a baja temperatura con costeo auditado por Eduardo Ariza.",
+      cogsCostPerLiter: 2.15,
+      fermentationLogs: [
+        { dayNum: 1, date: "2026-07-28", sg: 1.085, tempC: 20.5, ph: 5.30, notes: "Inoculación S-04" },
+        { dayNum: 5, date: "2026-08-02", sg: 1.040, tempC: 19.0, ph: 4.70, notes: "Atenuación 50%" },
+        { dayNum: 10, date: "2026-08-07", sg: 1.022, tempC: 15.0, ph: 4.40, notes: "Paso a cold crash gradual" },
+        { dayNum: 14, date: "2026-08-11", sg: 1.020, tempC: 4.0, ph: 4.35, notes: "Gravedad objetivo alcanzada" }
+      ],
+      maltsUsed: [
+        { name: "Malta Pale Ale 2-Row", batchLot: "MAL-AND-2026-03", qtyKg: 240 },
+        { name: "Malta Chocolate Roasted", batchLot: "MAL-AND-2026-01", qtyKg: 35 }
+      ],
+      hopsUsed: [
+        { name: "Columbus (Hervor)", batchLot: "HOP-YAK-2026-09", qtyG: 1200 }
+      ],
+      yeastUsed: "SafAle S-04 (Lote YST-2026-01)"
+    },
+    {
+      id: "LOT-2026-086",
+      recipeName: "NORTA Tempestad",
+      style: "Amber Ale Cobre / Red Ale Vivaz",
+      tankId: "BBT-01",
+      volumeLiters: 1500,
+      brewDate: "2026-07-20",
+      targetPackDate: "2026-08-14",
+      stage: "Acondicionado",
+      stageProgress: 95,
+      originalGravity: 1.054,
+      currentGravity: 1.013,
+      finalGravityTarget: 1.013,
+      currentTemp: 2.0,
+      targetTemp: 2.0,
+      abvCalculated: 5.38,
+      abvTarget: 5.4,
+      ibu: 28,
+      brewer: "Ing. Julio Roberto Cristancho",
+      status: "Activo",
+      dryHopStatus: "N/A",
+      notes: "Gasificación a 2.55 volúmenes de CO2. Listo para despachos comerciales.",
+      cogsCostPerLiter: 1.25,
+      fermentationLogs: [
+        { dayNum: 1, date: "2026-07-20", sg: 1.054, tempC: 19.0, ph: 5.15, notes: "Inicio de fermentación" },
+        { dayNum: 7, date: "2026-07-27", sg: 1.014, tempC: 18.5, ph: 4.30, notes: "Gravedad estable" }
+      ],
+      maltsUsed: [
+        { name: "Malta Pale Ale 2-Row", batchLot: "MAL-AND-2026-04", qtyKg: 310 }
+      ],
+      hopsUsed: [
+        { name: "Columbus", batchLot: "HOP-YAK-2026-05", qtyG: 1800 }
+      ],
+      yeastUsed: "SafAle US-05"
+    }
+  ],
+
+  // 4. TABLERO DE TANQUES (CELLAR MAP)
+  tanks: [
+    { id: "F-01", name: "Fermentador Cónico F-01", type: "Unitank Chaquetado", capacityL: 1500, currentL: 1200, currentBatchId: "LOT-2026-088", beerName: "NORTA Montana", status: "Fermentando", tempC: 19.5, pressureBar: 0.8, daysInTank: 5, glycolValve: "Auto (Refrigerando)", lastCipDate: "2026-08-07" },
+    { id: "F-02", name: "Fermentador Cónico F-02", type: "Unitank Chaquetado", capacityL: 1000, currentL: 800, currentBatchId: "LOT-2026-087", beerName: "NORTA Cumbre", status: "Madurando", tempC: 4.0, pressureBar: 1.2, daysInTank: 16, glycolValve: "Cerrada", lastCipDate: "2026-07-27" },
+    { id: "F-03", name: "Fermentador Cónico F-03", type: "Unitank Chaquetado", capacityL: 1500, currentL: 0, currentBatchId: null, beerName: "Disponible para Cocción", status: "CIP Aprobado", tempC: 18.0, pressureBar: 0.0, daysInTank: 0, glycolValve: "Inactiva", lastCipDate: "2026-08-12" },
+    { id: "F-04", name: "Fermentador Cónico F-04", type: "Unitank Chaquetado", capacityL: 1500, currentL: 1400, currentBatchId: "LOT-2026-084", beerName: "NORTA Montana", status: "Cold Crash", tempC: 1.5, pressureBar: 1.0, daysInTank: 12, glycolValve: "Auto", lastCipDate: "2026-08-01" },
+    { id: "BBT-01", name: "Bright Beer Tank BBT-01", type: "Tanque de Servicio / Gasificado", capacityL: 2000, currentL: 1500, currentBatchId: "LOT-2026-086", beerName: "NORTA Tempestad", status: "Listo para Envasar", tempC: 2.0, pressureBar: 1.5, daysInTank: 4, glycolValve: "Mantener Frío", lastCipDate: "2026-08-09" },
+    { id: "BBT-02", name: "Bright Beer Tank BBT-02", type: "Tanque de Servicio / Gasificado", capacityL: 2000, currentL: 0, currentBatchId: null, beerName: "Vacio", status: "Pendiente CIP", tempC: 21.0, pressureBar: 0.0, daysInTank: 0, glycolValve: "Inactiva", lastCipDate: "2026-08-05" }
+  ],
+
+    // 5. INVENTARIO DE MATERIAS PRIMAS (DEDUCT-ON-BREW BOM LINKED)
+  rawInventory: [
+    {
+      id: "RAW-01",
+      name: "Malta Pale Ale 2-Row (Sacos 25kg)",
+      category: "Maltas",
+      stockInitial: 3000,
+      entries: 1000,
+      entryDate: "2026-08-01",
+      expiryDate: "2027-08-01",
+      entryUnitPrice: 7800,
+      exits: 550,
+      stock: 3450,
+      unit: "kg",
+      minStock: 1000,
+      costPerUnit: 7800,
+      supplier: "Maltería Andina S.A.S.",
+      status: "Óptimo"
+    },
+    {
+      id: "RAW-02",
+      name: "Malta Pilsner Premium (Sacos 25kg)",
+      category: "Maltas",
+      stockInitial: 1800,
+      entries: 800,
+      entryDate: "2026-08-03",
+      expiryDate: "2027-08-03",
+      entryUnitPrice: 8200,
+      exits: 500,
+      stock: 2100,
+      unit: "kg",
+      minStock: 800,
+      costPerUnit: 8200,
+      supplier: "Maltería Andina S.A.S.",
+      status: "Óptimo"
+    },
+    {
+      id: "RAW-03",
+      name: "Malta Caramelo 60L",
+      category: "Maltas",
+      stockInitial: 350,
+      entries: 150,
+      entryDate: "2026-07-20",
+      expiryDate: "2027-07-20",
+      entryUnitPrice: 10500,
+      exits: 80,
+      stock: 420,
+      unit: "kg",
+      minStock: 200,
+      costPerUnit: 10500,
+      supplier: "Weyermann Specialty",
+      status: "Óptimo"
+    },
+    {
+      id: "RAW-04",
+      name: "Malta Chocolate Roasted",
+      category: "Maltas",
+      stockInitial: 220,
+      entries: 50,
+      entryDate: "2026-06-15",
+      expiryDate: "2027-06-15",
+      entryUnitPrice: 12500,
+      exits: 80,
+      stock: 190,
+      unit: "kg",
+      minStock: 150,
+      costPerUnit: 12500,
+      supplier: "Weyermann Specialty",
+      status: "Precaución"
+    },
+    {
+      id: "RAW-05",
+      name: "Lúpulo Citra T-90 Pellets (-18°C)",
+      category: "Lúpulos",
+      stockInitial: 30.0,
+      entries: 15.0,
+      entryDate: "2026-07-10",
+      expiryDate: "2026-10-15",
+      entryUnitPrice: 210000,
+      exits: 6.5,
+      stock: 38.5,
+      unit: "kg",
+      minStock: 15.0,
+      costPerUnit: 210000,
+      supplier: "Yakima Chief Hops",
+      status: "Por vencer"
+    },
+    {
+      id: "RAW-06",
+      name: "Lúpulo Mosaic T-90 Pellets (-18°C)",
+      category: "Lúpulos",
+      stockInitial: 18.0,
+      entries: 10.0,
+      entryDate: "2026-07-15",
+      expiryDate: "2027-07-15",
+      entryUnitPrice: 230000,
+      exits: 6.0,
+      stock: 22.0,
+      unit: "kg",
+      minStock: 12.0,
+      costPerUnit: 230000,
+      supplier: "Yakima Chief Hops",
+      status: "Óptimo"
+    },
+    {
+      id: "RAW-07",
+      name: "Lúpulo Columbus (Amargor Base)",
+      category: "Lúpulos",
+      stockInitial: 15.0,
+      entries: 8.0,
+      entryDate: "2026-06-01",
+      expiryDate: "2027-06-01",
+      entryUnitPrice: 145000,
+      exits: 5.0,
+      stock: 18.0,
+      unit: "kg",
+      minStock: 10.0,
+      costPerUnit: 145000,
+      supplier: "Yakima Chief Hops",
+      status: "Óptimo"
+    },
+    {
+      id: "RAW-08",
+      name: "Levadura SafAle US-05 (Paq. 500g)",
+      category: "Levaduras",
+      stockInitial: 12,
+      entries: 8,
+      entryDate: "2026-06-25",
+      expiryDate: "2026-10-30",
+      entryUnitPrice: 410000,
+      exits: 4,
+      stock: 16,
+      unit: "paquetes",
+      minStock: 6,
+      costPerUnit: 410000,
+      supplier: "Fermentis",
+      status: "Por vencer"
+    },
+    {
+      id: "RAW-09",
+      name: "Botellas Cerámicas NORTA 500ml",
+      category: "Empaques",
+      stockInitial: 3500,
+      entries: 2500,
+      entryDate: "2026-08-05",
+      expiryDate: "2030-01-01",
+      entryUnitPrice: 5200,
+      exits: 1200,
+      stock: 4800,
+      unit: "unidades",
+      minStock: 1500,
+      costPerUnit: 5200,
+      supplier: "Envases Rústicos S.A.",
+      status: "Óptimo"
+    },
+    {
+      id: "RAW-10",
+      name: "Latas de Aluminio 473ml NORTA",
+      category: "Empaques",
+      stockInitial: 10000,
+      entries: 8000,
+      entryDate: "2026-08-10",
+      expiryDate: "2030-01-01",
+      entryUnitPrice: 1200,
+      exits: 3800,
+      stock: 14200,
+      unit: "unidades",
+      minStock: 5000,
+      costPerUnit: 1200,
+      supplier: "Crown Can Packaging",
+      status: "Óptimo"
+    },
+    {
+      id: "RAW-11",
+      name: "Soda Cáustica Escamas 99% (CIP)",
+      category: "Químicos CIP",
+      stockInitial: 200,
+      entries: 100,
+      entryDate: "2026-07-28",
+      expiryDate: "2028-07-28",
+      entryUnitPrice: 9200,
+      exits: 60,
+      stock: 240,
+      unit: "kg",
+      minStock: 100,
+      costPerUnit: 9200,
+      supplier: "Químicos Industriales S.A.",
+      status: "Óptimo"
+    },
+    {
+      id: "RAW-12",
+      name: "Malta Pale Ale - Best Pale Ale",
+      category: "Maltas",
+      stockInitial: 252,
+      entries: 0,
+      entryDate: "2026-09-20",
+      expiryDate: "2027-09-20",
+      entryUnitPrice: 7059,
+      exits: 0,
+      stock: 252,
+      unit: "kg",
+      minStock: 50,
+      costPerUnit: 7059,
+      supplier: "BestMalz Alemania / Distribuidor",
+      status: "Óptimo"
+    },
+    {
+      id: "RAW-13",
+      name: "Malta Caramel Amber",
+      category: "Maltas",
+      stockInitial: 10,
+      entries: 0,
+      entryDate: "2026-09-20",
+      expiryDate: "2027-09-20",
+      entryUnitPrice: 8151,
+      exits: 0,
+      stock: 10,
+      unit: "kg",
+      minStock: 5,
+      costPerUnit: 8151,
+      supplier: "BestMalz / Weyermann",
+      status: "Óptimo"
+    },
+    {
+      id: "RAW-14",
+      name: "Malta Avena",
+      category: "Maltas",
+      stockInitial: 8,
+      entries: 0,
+      entryDate: "2026-09-20",
+      expiryDate: "2027-09-20",
+      entryUnitPrice: 17899,
+      exits: 0,
+      stock: 8,
+      unit: "kg",
+      minStock: 4,
+      costPerUnit: 17899,
+      supplier: "Maltería Especializada",
+      status: "Óptimo"
+    },
+    {
+      id: "RAW-15",
+      name: "Malta Chocolate",
+      category: "Maltas",
+      stockInitial: 3,
+      entries: 0,
+      entryDate: "2026-09-20",
+      expiryDate: "2027-09-20",
+      entryUnitPrice: 9580,
+      exits: 0,
+      stock: 3,
+      unit: "kg",
+      minStock: 2,
+      costPerUnit: 9580,
+      supplier: "Weyermann Specialty",
+      status: "Óptimo"
+    },
+    {
+      id: "RAW-16",
+      name: "Malta Biscuit",
+      category: "Maltas",
+      stockInitial: 2,
+      entries: 0,
+      entryDate: "2026-09-20",
+      expiryDate: "2027-09-20",
+      entryUnitPrice: 9496,
+      exits: 0,
+      stock: 2,
+      unit: "kg",
+      minStock: 2,
+      costPerUnit: 9496,
+      supplier: "Castle Malting",
+      status: "Óptimo"
+    },
+    {
+      id: "RAW-17",
+      name: "Malta Melano (Melanoidina)",
+      category: "Maltas",
+      stockInitial: 4,
+      entries: 0,
+      entryDate: "2026-09-20",
+      expiryDate: "2027-09-20",
+      entryUnitPrice: 7983,
+      exits: 0,
+      stock: 4,
+      unit: "kg",
+      minStock: 2,
+      costPerUnit: 7983,
+      supplier: "Weyermann Specialty",
+      status: "Óptimo"
+    },
+    {
+      id: "RAW-18",
+      name: "Malta Trigo",
+      category: "Maltas",
+      stockInitial: 4,
+      entries: 0,
+      entryDate: "2026-09-20",
+      expiryDate: "2027-09-20",
+      entryUnitPrice: 7311,
+      exits: 0,
+      stock: 4,
+      unit: "kg",
+      minStock: 2,
+      costPerUnit: 7311,
+      supplier: "BestMalz / Maltería Andina",
+      status: "Óptimo"
+    },
+    {
+      id: "RAW-19",
+      name: "Malta Caramel Pils",
+      category: "Maltas",
+      stockInitial: 7,
+      entries: 0,
+      entryDate: "2026-09-20",
+      expiryDate: "2027-09-20",
+      entryUnitPrice: 7815,
+      exits: 0,
+      stock: 7,
+      unit: "kg",
+      minStock: 3,
+      costPerUnit: 7815,
+      supplier: "BestMalz / Weyermann",
+      status: "Óptimo"
+    },
+    {
+      id: "RAW-20",
+      name: "Malta Negra Extra",
+      category: "Maltas",
+      stockInitial: 2,
+      entries: 0,
+      entryDate: "2026-09-20",
+      expiryDate: "2027-09-20",
+      entryUnitPrice: 12017,
+      exits: 0,
+      stock: 2,
+      unit: "kg",
+      minStock: 2,
+      costPerUnit: 12017,
+      supplier: "Castle Malting / Weyermann",
+      status: "Óptimo"
+    },
+    {
+      id: "RAW-21",
+      name: "Malta Caramel Munich 2",
+      category: "Maltas",
+      stockInitial: 3,
+      entries: 0,
+      entryDate: "2026-09-20",
+      expiryDate: "2027-09-20",
+      entryUnitPrice: 9748,
+      exits: 0,
+      stock: 3,
+      unit: "kg",
+      minStock: 2,
+      costPerUnit: 9748,
+      supplier: "Weyermann Specialty",
+      status: "Óptimo"
+    },
+    {
+      id: "RAW-22",
+      name: "Cebada Tostada",
+      category: "Maltas",
+      stockInitial: 5,
+      entries: 0,
+      entryDate: "2026-09-20",
+      expiryDate: "2027-09-20",
+      entryUnitPrice: 8487,
+      exits: 0,
+      stock: 5,
+      unit: "kg",
+      minStock: 2,
+      costPerUnit: 8487,
+      supplier: "Maltería Especializada",
+      status: "Óptimo"
+    },
+    {
+      id: "RAW-23",
+      name: "Lúpulo Cascade T-90 Pellets",
+      category: "Lúpulos",
+      stockInitial: 1.85,
+      entries: 0,
+      entryDate: "2026-09-20",
+      expiryDate: "2027-09-20",
+      entryUnitPrice: 126050,
+      exits: 0,
+      stock: 1.85,
+      unit: "kg",
+      minStock: 1.0,
+      costPerUnit: 126050,
+      supplier: "Yakima Chief Hops / Distribuidor",
+      status: "Óptimo"
+    },
+    {
+      id: "RAW-24",
+      name: "Lúpulo East Kent Golding (EKG)",
+      category: "Lúpulos",
+      stockInitial: 0.80,
+      entries: 0,
+      entryDate: "2026-09-20",
+      expiryDate: "2027-09-20",
+      entryUnitPrice: 193277,
+      exits: 0,
+      stock: 0.80,
+      unit: "kg",
+      minStock: 0.5,
+      costPerUnit: 193277,
+      supplier: "Hopunion / BarthHaas",
+      status: "Óptimo"
+    },
+    {
+      id: "RAW-25",
+      name: "Levadura SafAle US-05",
+      category: "Levaduras",
+      stockInitial: 1.0,
+      entries: 0,
+      entryDate: "2026-09-20",
+      expiryDate: "2027-03-20",
+      entryUnitPrice: 277311,
+      exits: 0,
+      stock: 1.0,
+      unit: "paquetes (500g)",
+      minStock: 1.0,
+      costPerUnit: 277311,
+      supplier: "Fermentis by Lesaffre",
+      status: "Óptimo"
+    },
+    {
+      id: "RAW-26",
+      name: "Clarificante Whirlfloc",
+      category: "Químicos CIP",
+      stockInitial: 0.50,
+      entries: 0,
+      entryDate: "2026-09-20",
+      expiryDate: "2028-09-20",
+      entryUnitPrice: 260504,
+      exits: 0,
+      stock: 0.50,
+      unit: "kg",
+      minStock: 0.2,
+      costPerUnit: 260504,
+      supplier: "Ecolab / Proveedor Cervecero",
+      status: "Óptimo"
+    },
+    {
+      id: "RAW-27",
+      name: "Saborizante Natural Cereza (4 Oz)",
+      category: "Adjuntos e Ingredientes Especiales",
+      stockInitial: 1.0,
+      entries: 0,
+      entryDate: "2026-09-20",
+      expiryDate: "2027-09-20",
+      entryUnitPrice: 32773,
+      exits: 0,
+      stock: 1.0,
+      unit: "frascos (4oz)",
+      minStock: 1.0,
+      costPerUnit: 32773,
+      supplier: "Insumos Cerveceros & Esencias",
+      status: "Óptimo"
+    },
+    {
+      id: "RAW-28",
+      name: "Cáscara de Naranja Dulce Seca (1 Oz)",
+      category: "Adjuntos e Ingredientes Especiales",
+      stockInitial: 2.0,
+      entries: 0,
+      entryDate: "2026-09-20",
+      expiryDate: "2027-09-20",
+      entryUnitPrice: 15126,
+      exits: 0,
+      stock: 2.0,
+      unit: "bolsas (1oz)",
+      minStock: 1.0,
+      costPerUnit: 15126,
+      supplier: "Insumos Botánicos & Especias",
+      status: "Óptimo"
+    },
+    {
+      id: "RAW-29",
+      name: "Romero Seco Especial",
+      category: "Adjuntos e Ingredientes Especiales",
+      stockInitial: 1.0,
+      entries: 0,
+      entryDate: "2026-09-20",
+      expiryDate: "2027-09-20",
+      entryUnitPrice: 20000,
+      exits: 0,
+      stock: 1.0,
+      unit: "kg",
+      minStock: 0.5,
+      costPerUnit: 20000,
+      supplier: "Hierbas y Especias de Origen",
+      status: "Óptimo"
+    },
+    {
+      id: "RAW-30",
+      name: "Miel Pura de Abejas",
+      category: "Adjuntos e Ingredientes Especiales",
+      stockInitial: 1.0,
+      entries: 0,
+      entryDate: "2026-09-20",
+      expiryDate: "2028-09-20",
+      entryUnitPrice: 217800,
+      exits: 0,
+      stock: 1.0,
+      unit: "kg",
+      minStock: 0.5,
+      costPerUnit: 217800,
+      supplier: "Apiarios Andinos",
+      status: "Óptimo"
+    },
+    {
+      id: "RAW-31",
+      name: "Pimienta Negra en Pepa",
+      category: "Adjuntos e Ingredientes Especiales",
+      stockInitial: 1.0,
+      entries: 0,
+      entryDate: "2026-09-20",
+      expiryDate: "2028-09-20",
+      entryUnitPrice: 5000,
+      exits: 0,
+      stock: 1.0,
+      unit: "kg",
+      minStock: 0.5,
+      costPerUnit: 5000,
+      supplier: "Especias del Campo",
+      status: "Óptimo"
+    },
+    {
+      id: "RAW-32",
+      name: "Jalapeños Frescos Seleccionados",
+      category: "Adjuntos e Ingredientes Especiales",
+      stockInitial: 1.0,
+      entries: 0,
+      entryDate: "2026-09-20",
+      expiryDate: "2026-10-20",
+      entryUnitPrice: 12500,
+      exits: 0,
+      stock: 1.0,
+      unit: "kg",
+      minStock: 0.5,
+      costPerUnit: 12500,
+      supplier: "Huerta Andina Agropecuaria",
+      status: "Por vencer"
+    }
+  ],
+
+  // 6. PRODUCTO TERMINADO (FINISHED GOODS EN COP)
+  finishedGoods: [
+    {
+      id: "FG-01",
+      name: "Barril Inox 30L - NORTA Montana",
+      style: "Amber Mountain Ale",
+      packaging: "Barril 30L",
+      brewDate: "2026-07-20",
+      stockUnits: 28,
+      litersPerUnit: 30,
+      cogsCost: 245000,
+      wholesalePrice: 620000,
+      marginPct: "60.5%",
+      marginAbs: 375000
+    },
+    {
+      id: "FG-02",
+      name: "Barril Inox 50L - NORTA Montana",
+      style: "Amber Mountain Ale",
+      packaging: "Barril 50L",
+      brewDate: "2026-07-15",
+      stockUnits: 19,
+      litersPerUnit: 50,
+      cogsCost: 310000,
+      wholesalePrice: 850000,
+      marginPct: "63.5%",
+      marginAbs: 540000
+    },
+    {
+      id: "FG-03",
+      name: "Caja 12x500ml Swing-Top - NORTA Cumbre",
+      style: "Imperial Golden Ale",
+      packaging: "Caja 12x500ml",
+      brewDate: "2026-07-01",
+      stockUnits: 95,
+      litersPerUnit: 6.0,
+      cogsCost: 98000,
+      wholesalePrice: 260000,
+      marginPct: "62.3%",
+      marginAbs: 162000
+    },
+    {
+      id: "FG-04",
+      name: "Pack 6 Latas 473ml - NORTA Tempestad",
+      style: "Storm Cold IPA",
+      packaging: "Pack 6 Latas",
+      brewDate: "2026-08-05",
+      stockUnits: 380,
+      litersPerUnit: 2.84,
+      cogsCost: 32000,
+      wholesalePrice: 82000,
+      marginPct: "61.0%",
+      marginAbs: 50000
+    },
+    {
+      id: "FG-05",
+      name: "Pack 6 Latas 473ml - NORTA Niebla",
+      style: "Witbier / Hazy Ale",
+      packaging: "Pack 6 Latas",
+      brewDate: "2026-08-02",
+      stockUnits: 195,
+      litersPerUnit: 2.84,
+      cogsCost: 33500,
+      wholesalePrice: 85000,
+      marginPct: "60.6%",
+      marginAbs: 51500
+    },
+    {
+      id: "FG-06",
+      name: "Barril Inox 30L - NORTA Tempestad",
+      style: "Storm Cold IPA",
+      packaging: "Barril 30L",
+      brewDate: "2026-07-28",
+      stockUnits: 15,
+      litersPerUnit: 30,
+      cogsCost: 250000,
+      wholesalePrice: 640000,
+      marginPct: "60.9%",
+      marginAbs: 390000
+    }
+  ],
+
+  // 6.1 MAQUINARIA Y EQUIPO (ACTIVOS FIJOS NORTA EN COP)
+  machineryAndEquipment: [
+    {
+      id: "ACT-BLH-01",
+      name: "Bloque de Cocción 1000L Inox 304 (Macerador, Paila, Whirlpool)",
+      category: "Cocción",
+      purchaseDate: "2023-01-15",
+      acquisitionCost: 145000000,
+      usefulLifeYears: 15,
+      currentStatus: "Operativo 🟢",
+      depreciationAccumulated: 33833333
+    },
+    {
+      id: "ACT-FER-01",
+      name: "Fermentador Cónico Unitank Chaquetado 1500L F-01",
+      category: "Fermentación",
+      purchaseDate: "2023-02-10",
+      acquisitionCost: 38000000,
+      usefulLifeYears: 12,
+      currentStatus: "Operativo 🟢",
+      depreciationAccumulated: 11083333
+    },
+    {
+      id: "ACT-FER-02",
+      name: "Fermentador Cónico Unitank Chaquetado 1000L F-02",
+      category: "Fermentación",
+      purchaseDate: "2023-02-10",
+      acquisitionCost: 28500000,
+      usefulLifeYears: 12,
+      currentStatus: "Operativo 🟢",
+      depreciationAccumulated: 8312500
+    },
+    {
+      id: "ACT-BBT-01",
+      name: "Tanque de Servicio y Gasificado BBT-01 2000L",
+      category: "Acondicionado",
+      purchaseDate: "2023-04-05",
+      acquisitionCost: 44000000,
+      usefulLifeYears: 12,
+      currentStatus: "Operativo 🟢",
+      depreciationAccumulated: 12222222
+    },
+    {
+      id: "ACT-CHL-01",
+      name: "Chiller Enfriador de Glicol 10 HP Doble Compresor",
+      category: "Servicios Industriales",
+      purchaseDate: "2023-01-20",
+      acquisitionCost: 52000000,
+      usefulLifeYears: 10,
+      currentStatus: "Operativo 🟢",
+      depreciationAccumulated: 18200000
+    },
+    {
+      id: "ACT-CIP-01",
+      name: "Sistema CIP Móvil Automático 2 Tanques (150L c/u) con Bomba Sanitaria",
+      category: "Limpieza y Calidad",
+      purchaseDate: "2023-05-18",
+      acquisitionCost: 19500000,
+      usefulLifeYears: 10,
+      currentStatus: "Operativo 🟢",
+      depreciationAccumulated: 6175000
+    },
+    {
+      id: "ACT-MOL-01",
+      name: "Molino Industrial de 2 Rodillos Ajustables para Granos 3 HP",
+      category: "Molienda",
+      purchaseDate: "2023-01-25",
+      acquisitionCost: 11800000,
+      usefulLifeYears: 10,
+      currentStatus: "Mantenimiento Preventivo 🟡",
+      depreciationAccumulated: 4130000
+    },
+    {
+      id: "ACT-ENV-01",
+      name: "Llenadora y Enlatadora Isobárica Automática 1 Cabezal (Latas 473ml)",
+      category: "Envasado",
+      purchaseDate: "2024-03-10",
+      acquisitionCost: 65000000,
+      usefulLifeYears: 10,
+      currentStatus: "Operativo 🟢",
+      depreciationAccumulated: 15708333
+    },
+    {
+      id: "ACT-CRB-01",
+      name: "Piedra Carbonadora Inox 316L (2 Micrones)",
+      category: "Maduración y Carbonatación",
+      purchaseDate: "2026-09-20",
+      acquisitionCost: 33613,
+      usefulLifeYears: 5,
+      currentStatus: "Operativo 🟢",
+      depreciationAccumulated: 0
+    }
+  ],
+
+    // 6.2 HISTORIAL CENTRALIZADO DE MOVIMIENTOS DE INVENTARIO (AUDITORÍA & KARDEX NORTA)
+  inventoryMovements: [
+    {
+      id: "MOV-2026-001",
+      date: "2026-08-20 09:30",
+      type: "ENTRADA",
+      category: "RAW",
+      itemId: "RAW-01",
+      itemName: "Malta Pale Ale 2-Row (Sacos 25kg)",
+      quantity: 1000,
+      unit: "kg",
+      reason: "Compra a proveedor",
+      notes: "Factura FAC-8921 Maltería Andina. Lote MAL-AND-2026-08 ingresado a estibas B-1.",
+      responsible: "Ing. Julio Roberto Cristancho",
+      transformationLinkedId: null
+    },
+    {
+      id: "MOV-2026-002",
+      date: "2026-08-21 14:15",
+      type: "SALIDA_TRANSFORMACION",
+      category: "RAW",
+      itemId: "RAW-01",
+      itemName: "Malta Pale Ale 2-Row (Sacos 25kg)",
+      quantity: 280,
+      unit: "kg",
+      reason: "Uso en producción",
+      notes: "Carga de molienda y macerado para nuevo lote NORTA Montana en F-01.",
+      responsible: "Ing. Julio Roberto Cristancho",
+      transformationLinkedId: "LOT-2026-088"
+    },
+    {
+      id: "MOV-2026-003",
+      date: "2026-08-21 14:15",
+      type: "ENTRADA_TRANSFORMACION",
+      category: "WIP",
+      itemId: "LOT-2026-088",
+      itemName: "NORTA Montana en F-01",
+      quantity: 1200,
+      unit: "L",
+      reason: "Transformación desde Insumos",
+      notes: "Siembra de levadura e inicio de fermentación a 19.5°C.",
+      responsible: "Ing. Julio Roberto Cristancho",
+      transformationLinkedId: "MOV-2026-002"
+    },
+    {
+      id: "MOV-2026-004",
+      date: "2026-08-22 11:00",
+      type: "SALIDA_TRANSFORMACION",
+      category: "WIP",
+      itemId: "LOT-2026-086",
+      itemName: "NORTA Tempestad en BBT-01",
+      quantity: 1500,
+      unit: "L",
+      reason: "Finalización de lote",
+      notes: "Lote acondicionado, gasificado a 2.55 vol CO2 y envasado en Barriles 30L y Latas 473ml.",
+      responsible: "Cristian Fonseca",
+      transformationLinkedId: "FG-04"
+    },
+    {
+      id: "MOV-2026-005",
+      date: "2026-08-22 11:00",
+      type: "ENTRADA_TRANSFORMACION",
+      category: "FINISHED",
+      itemId: "FG-04",
+      itemName: "Pack 6 Latas 473ml - NORTA Tempestad",
+      quantity: 380,
+      unit: "packs",
+      reason: "Transformación desde Proceso (WIP)",
+      notes: "Ingreso de 380 packs a cámara fría tras pase de control de calidad LAB-2026-078.",
+      responsible: "Cristian Fonseca",
+      transformationLinkedId: "MOV-2026-004"
+    },
+    {
+      id: "MOV-2026-006",
+      date: "2026-08-23 16:45",
+      type: "SALIDA",
+      category: "RAW",
+      itemId: "RAW-04",
+      itemName: "Malta Chocolate Roasted",
+      quantity: 15,
+      unit: "kg",
+      reason: "Baja / Pérdida / Merma",
+      notes: "Humedad detectada en saco por rotura en estiba. Insumo dado de baja de acuerdo con POES de almacenamiento.",
+      responsible: "Cristian Fonseca",
+      transformationLinkedId: null
+    }
+  ],
+
+  // 7. CRM & PORTAL B2B CLIENTES (BREWW STYLE B2B PORTAL)
+  clients: [
+    { id: "CLI-001", name: "The Viking Beer Bar", type: "Bar Especializado / Taphouse", contactName: "Carlos Mendoza", phone: "+57 312 456 7890", email: "gerencia@vikingbeerbar.com", city: "Bogotá D.C. - Zona T", creditLimit: 3000, kegsInPossession: 8, totalPurchasesUSD: 14250, status: "Activo - Cliente VIP", pinCode: "1042" },
+    { id: "CLI-002", name: "Cervecería & Grill El Roble", type: "Restaurante Gourmet", contactName: "Laura Restrepo", phone: "+57 315 889 1234", email: "compras@elroblegrill.co", city: "Chía, Cundinamarca", creditLimit: 1800, kegsInPossession: 4, totalPurchasesUSD: 8640, status: "Activo", pinCode: "2088" },
+    { id: "CLI-003", name: "Taproom Oficial NORTA", type: "Punto Propio / Bar de Fábrica", contactName: "Iván Ahumada", phone: "+57 300 112 3344", email: "ventas@norta.co", city: "Planta Sabana", creditLimit: 10000, kegsInPossession: 12, totalPurchasesUSD: 28900, status: "Punto Propio", pinCode: "3000" },
+    { id: "CLI-004", name: "La Taberna del Lúpulo", type: "Bar Artesanal", contactName: "Andrés Silva", phone: "+57 310 998 7766", email: "taberna.lupulo@gmail.com", city: "Medellín - El Poblado", creditLimit: 2500, kegsInPossession: 6, totalPurchasesUSD: 11200, status: "Activo", pinCode: "4055" }
+  ],
+
+  salesOrders: [
+    { id: "ORD-2026-105", clientName: "The Viking Beer Bar", date: "2026-08-12", items: "4x Barril 30L NORTA Montana, 2x Barril 30L NORTA Tempestad", totalAmountUSD: 870.00, status: "En Preparación", paymentStatus: "Crédito 15 días", deliveryDate: "2026-08-14" },
+    { id: "ORD-2026-104", clientName: "Cervecería & Grill El Roble", date: "2026-08-10", items: "2x Barril 50L NORTA Montana, 10x Botella Swing-Top NORTA Cumbre", totalAmountUSD: 810.00, status: "Despachado", paymentStatus: "Pagado", deliveryDate: "2026-08-11" }
+  ],
+
+  kegs: [
+    { serial: "KEG-NTA-0142", capacityL: 30, style: "NORTA Montana (Amber Mountain Ale)", client: "The Viking Beer Bar", sentDate: "2026-07-28", daysOut: 16, alert: "Normal" },
+    { serial: "KEG-NTA-0143", capacityL: 30, style: "NORTA Montana (Amber Mountain Ale)", client: "The Viking Beer Bar", sentDate: "2026-07-28", daysOut: 16, alert: "Normal" },
+    { serial: "KEG-NTA-0089", capacityL: 50, style: "NORTA Montana (Golden Ale)", client: "Cervecería El Roble", sentDate: "2026-07-15", daysOut: 29, alert: "Próximo Retorno (29d)" },
+    { serial: "KEG-NTA-0055", capacityL: 30, style: "NORTA Tempestad (Amber Ale)", client: "La Taberna del Lúpulo", sentDate: "2026-07-02", daysOut: 42, alert: "Alerta Demora (>30d)" }
+  ],
+
+  cipLogs: [
+    { id: "CIP-2026-042", date: "2026-08-12 14:30", equipment: "Fermentador F-03", operator: "Cristian Fonseca", cycleType: "Lavado Completo (Cáustica + Ácido + Peracético)", causticTempC: 76.5, causticConcentrationPct: "2.2%", peraceticConcentrationPpm: 180, rinseFinalPh: 7.1, swabAdenosineTriphosphateRlu: 8, status: "Aprobado Sanitariamente", supervisor: "Ing. Julio Roberto Cristancho" }
+  ],
+
+  qualityTests: [
+    { id: "LAB-2026-078", batchId: "LOT-2026-088", date: "2026-08-12", style: "NORTA Montana (Amber Mountain Ale)", tank: "F-01", ph: 4.35, dissolvedOxygenPpb: 28, carbonationVolCo2: 2.45, turbidityNtu: 38.0, diacetylSensoryScore: "0 / 5 (Ausente)", sensoryScore100: 94, analyst: "Ing. Julio Roberto Cristancho", overallVerdict: "Conforme a Especificación NORTA" }
+  ],
+
+  employees: [
+    {
+      id: "EMP-01",
+      name: "Cristian Fonseca",
+      role: "Gerente General",
+      dept: "Dirección General & Presidencia",
+      phone: "+57 316 789 0123",
+      email: "cristian.fonseca@norta.co",
+      joinDate: "2023-01-10",
+      certStatus: "Al Día"
+    },
+    {
+      id: "EMP-02",
+      name: "Iván Ahumada",
+      role: "Gerente Comercial",
+      dept: "Comercial, Cuentas & Ventas B2B",
+      phone: "+57 300 456 7890",
+      email: "ivan.ahumada@norta.co",
+      joinDate: "2023-02-15",
+      certStatus: "Al Día"
+    },
+    {
+      id: "EMP-03",
+      name: "Eduardo Ariza",
+      role: "Gerente Financiero",
+      dept: "Finanzas, Tesorería & Control de Gestión",
+      phone: "+57 301 345 6789",
+      email: "eduardo.ariza@norta.co",
+      joinDate: "2023-03-01",
+      certStatus: "Al Día"
+    },
+    {
+      id: "EMP-04",
+      name: "Yesid Ariza",
+      role: "Gerente de Producción",
+      dept: "Operaciones de Planta & Cadena Productiva",
+      phone: "+57 314 876 5432",
+      email: "yesid.ariza@norta.co",
+      joinDate: "2023-03-15",
+      certStatus: "Al Día"
+    },
+    {
+      id: "EMP-05",
+      name: "Pablo Cerón",
+      role: "Maestro Cervecero",
+      dept: "Alquimia Cervecera, Calidad & Sala de Cocción",
+      phone: "+57 310 987 6543",
+      email: "pablo.ceron@norta.co",
+      joinDate: "2023-04-01",
+      certStatus: "Al Día"
+    },
+    {
+      id: "EMP-06",
+      name: "Julio Roberto Cristancho B.",
+      role: "Compliance Officer",
+      dept: "Gobernanza, Control Sanitario INVIMA & Legal",
+      phone: "+57 311 234 5678",
+      email: "julio.cristancho@norta.co",
+      joinDate: "2023-01-15",
+      certStatus: "Al Día"
+    }
+  ],
+
+  shifts: [
+    { day: "Lunes 17 Ago", morningShift: "Ing. Julio Roberto Cristancho (Cocción Lote NORTA Montana)", afternoonShift: "Cristian Fonseca (Transferencia & CIP)", nightWatch: "Monitoreo Remoto Glycol" },
+    { day: "Martes 18 Ago", morningShift: "Cristian Fonseca (Macerado & Molienda)", afternoonShift: "Iván Ahumada (Despachos B2B)", nightWatch: "Guardia Planta" },
+    { day: "Miércoles 19 Ago", morningShift: "Ing. Julio Roberto Cristancho (Dry Hopping)", afternoonShift: "Yesid Ariza & Eduardo Ariza (Cierre de Costos)", nightWatch: "Monitoreo Remoto" }
+  ],
+
+  certifications: [
+    { employee: "Ing. Julio Roberto Cristancho", cert: "Certificación Maestro Cervecero VLB Berlín & Inocuidad", expiryDate: "2028-04-20", status: "Vigente" },
+    { employee: "Yesid Ariza", cert: "Tarjeta Profesional CP & NIIF Financieras", expiryDate: "2029-12-31", status: "Vigente" },
+    { employee: "Eduardo Ariza", cert: "Tarjeta Profesional CP & Auditoría de Costos", expiryDate: "2029-12-31", status: "Vigente" },
+    { employee: "Cristian Fonseca", cert: "Carnet Manipulación Higiénica Alimentos & Seguridad", expiryDate: "2027-09-15", status: "Vigente" },
+    { employee: "Iván Ahumada", cert: "Gestión Comercial B2B & Inocuidad de Bebidas", expiryDate: "2027-11-30", status: "Vigente" }
+  ],
+
+  legal: {
+    sanitaryRegistries: [
+      { code: "RSA-0019844-2023", beer: "Cerveza NORTA Montana (Amber Mountain Ale)", issueDate: "2023-11-18", expiryDate: "2028-11-18", status: "Vigente 🟢", authority: "INVIMA / Dirección de Alimentos" },
+      { code: "RSA-0021430-2023", beer: "Cerveza NORTA Tempestad (Amber Ale)", issueDate: "2023-12-12", expiryDate: "2028-12-12", status: "Vigente 🟢", authority: "INVIMA / Dirección de Alimentos" },
+      { code: "RSA-0008761-2021", beer: "Cerveza NORTA Cumbre (Imperial Stout)", issueDate: "2021-09-28", expiryDate: "2026-09-28", status: "Renovación Urgente 🟡 (46 días)", authority: "INVIMA / Dirección de Alimentos" }
+    ],
+    taxCompliance: {
+      currentMonthLitersProduced: 5500,
+      taxPerLiterUSD: 0.12,
+      taxEstimatedUSD: 660.00,
+      stampsStock: 18500,
+      nextFilingDeadline: "2026-08-28"
+    },
+    plantPermits: [
+      { name: "Concepto Favorable Sanitario de Fábrica", entity: "Secretaría de Salud", validity: "2027-05-10", status: "Vigente" },
+      { name: "Permiso de Vertimientos Industriales y Aguas", entity: "Autoridad Ambiental (CAR)", validity: "2027-10-22", status: "Vigente" },
+      { name: "Certificado de Seguridad contra Incendios", entity: "Cuerpo de Bomberos", validity: "2027-01-30", status: "Vigente" },
+      { name: "Registro de Marca Comercial 'NORTA'", entity: "Superintendencia de Industria y Comercio", validity: "2033-08-14", status: "Vigente" }
+    ]
+  },
+
+  // 9. MÓDULO CONTROL SANITARIO INVIMA (11 PROGRAMAS Y CARPETAS OFICIALES)
+
+  // METADATA Y REGISTROS DEL FORMATO FO-AG-002 (CONTROL DE AGUA POTABLE)
+  waterControlMetadata: {
+    system: "SISTEMA DE GESTIÓN DE CALIDAD",
+    code: "FO-AG-002",
+    creationDate: "AGOSTO 2024",
+    title: "FORMATO DE CONTROL DE AGUA POTABLE",
+    version: "VERSIÓN 1",
+    parametersNorm: "Referencia Decreto 2115 de 2007, la cantidad de Cloro Libre en Agua potable es de 0.3 a 2.0 expresada en mg / L (Cl2). pH 6.5 a 9.0. Si los parámetros No Cumplen hacer una segunda toma en otro punto diferente, si la No Conformidad continúa remitirse al Programa de Control de Agua Potable y verificar las medidas correctivas a tomar.",
+    frequency: "Una vez al día, antes de iniciar procesos."
+  },
+
+  waterControlLogs: [
+    { id: "WLOG-001", date: "2026-08-24", time: "07:30", location: "Llave de Maceración (Muela)", chlorineMgL: 1.20, ph: 7.20, complies: "SI", verifiedBy: "Ing. Julio Roberto Cristancho", notes: "Parámetros óptimos en norma Decreto 2115." },
+    { id: "WLOG-002", date: "2026-08-23", time: "07:15", location: "Tanque de Reserva de Agua Potable", chlorineMgL: 1.15, ph: 7.10, complies: "SI", verifiedBy: "Cristian Fonseca", notes: "Lavado previo verificado." },
+    { id: "WLOG-003", date: "2026-08-22", time: "07:45", location: "Salida Filtro de Carbón Activado", chlorineMgL: 0.95, ph: 7.30, complies: "SI", verifiedBy: "Ing. Julio Roberto Cristancho", notes: "Filtro operando con flujo normal." }
+  ],
+
+
+  // METADATA Y REGISTROS DEL FORMATO FO-ALM-001 (INGRESO DE MATERIALES - ALMACENAMIENTO)
+  storageIngressMetadata: {
+    system: "PROGRAMA DE ALMACENAMIENTO",
+    code: "FO-ALM-001",
+    creationDate: "DICIEMBRE 2025",
+    title: "Formato de Ingreso de Materiales",
+    version: "VERSIÓN 1"
+  },
+
+  storageIngressLogs: [
+    { id: "SLOG-001", date: "2026-08-24", product: "Malta Pale Ale 2-Row (Sacos 25kg)", batchLot: "MAL-AND-2026-08", quantity: "1,000 kg", supplier: "Maltería Andina S.A.S.", expiryDate: "2027-08-15", notes: "Empaques sellados e inspeccionados. COA adjunto.", responsible: "Ing. Julio Roberto Cristancho" },
+    { id: "SLOG-002", date: "2026-08-22", product: "Lúpulo Citra T-90 Pellets", batchLot: "HOP-YAK-2026-19", quantity: "25 kg", supplier: "Yakima Chief Hops", expiryDate: "2027-11-30", notes: "Empaque al vacío a -18°C conforme.", responsible: "Cristian Fonseca" },
+    { id: "SLOG-003", date: "2026-08-20", product: "Botellas Cerámicas NORTA 500ml", batchLot: "BOT-ENV-2026-04", quantity: "2,400 uds", supplier: "Envases Rústicos S.A.", expiryDate: "N/A", notes: "Estibas limpias sin rupturas.", responsible: "Ing. Julio Roberto Cristancho" }
+  ],
+
+
+  // 3. SEED DATOS CALIBRACIÓN (BPM-FO-27)
+  phMeterLogs: [
+    { id: "PH-001", date: "2026-08-24", buffer4Reading: 4.02, buffer4Temp: 20.1, buffer4Error: 0.01, buffer7Reading: 7.02, buffer7Temp: 20.0, buffer7Error: 0.01, status: "Conforme 🟢", verifiedBy: "Ing. Julio Roberto Cristancho" },
+    { id: "PH-002", date: "2026-08-17", buffer4Reading: 4.01, buffer4Temp: 20.5, buffer4Error: 0.00, buffer7Reading: 7.00, buffer7Temp: 20.4, buffer7Error: 0.00, status: "Conforme 🟢", verifiedBy: "Cristian Fonseca" },
+    { id: "PH-003", date: "2026-08-10", buffer4Reading: 4.03, buffer4Temp: 21.0, buffer4Error: 0.02, buffer7Reading: 7.03, buffer7Temp: 21.0, buffer7Error: 0.02, status: "Conforme 🟢", verifiedBy: "Ing. Julio Roberto Cristancho" }
+  ],
+  calibrationSchedule: [
+    { id: "CAL-001", equipment: "pH-Metro Hanna HI98103", frequency: "Semanal", lastCal: "2026-08-24", nextCal: "2026-08-31", lab: "Interno NORTA", cert: "CERT-PH-2026-08" },
+    { id: "CAL-002", equipment: "Balanza Analítica OHAUS 50kg", frequency: "Semestral", lastCal: "2026-06-15", nextCal: "2026-12-15", lab: "Metrología Colombia S.A.S.", cert: "CERT-BAL-2026-06" },
+    { id: "CAL-003", equipment: "Termómetro Digital de Inmersión PT100", frequency: "Trimestral", lastCal: "2026-07-01", nextCal: "2026-10-01", lab: "Metrología Colombia S.A.S.", cert: "CERT-TERM-2026-07" },
+    { id: "CAL-004", equipment: "Manómetro de CO2 Tanques BBT", frequency: "Anual", lastCal: "2026-02-10", nextCal: "2027-02-10", lab: "Metrología Colombia S.A.S.", cert: "CERT-MAN-2026-02" }
+  ],
+
+  // 4. SEED DATOS CAPACITACIÓN (FO-CAP-001)
+  trainingSchedule: [
+    { id: "TS-001", topic: "Inducción sobre las BPM (Buenas Prácticas de Manufactura)", instructor: "Ing. Julio Roberto Cristancho", modality: "Presencial", duration: "2 horas", month: "Enero", status: "Ejecutado 🟢" },
+    { id: "TS-002", topic: "Plan de Saneamiento Básico (L&D, Residuos, Plagas y Agua)", instructor: "Asesor Calidad", modality: "Presencial", duration: "2 horas", month: "Marzo", status: "Ejecutado 🟢" },
+    { id: "TS-003", topic: "Procedimientos POES de Limpieza y Desinfección CIP", instructor: "Ing. Julio Roberto Cristancho", modality: "Teórico-Práctico", duration: "3 horas", month: "Junio", status: "Ejecutado 🟢" },
+    { id: "TS-004", topic: "Peligros Físicos, Químicos y Biológicos en Cervecería", instructor: "Calidad NORTA", modality: "Presencial", duration: "2 horas", month: "Septiembre", status: "Programado 📅" }
+  ],
+  trainingAttendance: [
+    { id: "TA-001", date: "2026-06-15", topic: "Procedimientos POES de Limpieza y Desinfección CIP", employee: "Cristian Fonseca", nationalId: "1.018.492.102", role: "Administrador de Planta", score: 4.8, status: "Aprobado 🟢" },
+    { id: "TA-002", date: "2026-06-15", topic: "Procedimientos POES de Limpieza y Desinfección CIP", employee: "Iván Ahumada", nationalId: "80.192.304", role: "Director Comercial", score: 4.5, status: "Aprobado 🟢" },
+    { id: "TA-003", date: "2026-03-20", topic: "Plan de Saneamiento Básico", employee: "Yesid Ariza", nationalId: "52.391.029", role: "Directora Financiera", score: 5.0, status: "Aprobado 🟢" }
+  ],
+
+  // 5. SEED DATOS CONTROL DE PLAGAS (PG-GC-004)
+  pestControlLogs: [
+    { id: "PLOG-001", date: "2026-08-24", station: "Estación 1 - Puerta Recepción MP", baitStatus: "Intacto 🟢", pestsObserved: "Ninguna (Conforme C)", barriersStatus: "Hermético (C)", correctiveAction: "Ninguna requerida.", technician: "Fumigaciones Sabana Norte S.A.S." },
+    { id: "PLOG-002", date: "2026-08-24", station: "Estación 2 - Bodega de Insumos & Maltas", baitStatus: "Intacto 🟢", pestsObserved: "Ninguna (Conforme C)", barriersStatus: "Hermético (C)", correctiveAction: "Limpieza periódica estibas.", technician: "Fumigaciones Sabana Norte S.A.S." },
+    { id: "PLOG-003", date: "2026-08-24", station: "Estación 3 - Zona de Cocción & Fermentación", baitStatus: "Intacto 🟢", pestsObserved: "Ninguna (Conforme C)", barriersStatus: "Hermético (C)", correctiveAction: "Sellamiento de sifón verificado.", technician: "Fumigaciones Sabana Norte S.A.S." },
+    { id: "PLOG-004", date: "2026-08-24", station: "Estación 4 - Zona Externa Residuos", baitStatus: "Cebo Consumido (Reemplazado 🟡)", pestsObserved: "Ninguna (Conforme C)", barriersStatus: "Hermético (C)", correctiveAction: "Reemplazo de cebos raticidas.", technician: "Fumigaciones Sabana Norte S.A.S." }
+  ],
+
+
+  // 6. SEED DATOS LIMPIEZA Y DESINFECCIÓN (FO-LD-001)
+  cleaningSanitationLogs: [
+    { id: "LD-001", date: "2026-08-24", area: "Tanque Fermentador F-01", frequency: "Por Lote", chemical: "Soda Cáustica 2% + Ácido Peracético 0.2%", concentration: "200 ppm", status: "Conforme 🟢", verifiedBy: "Ing. Julio Roberto Cristancho" },
+    { id: "LD-002", date: "2026-08-24", area: "Marmita de Cocción & Tuberías", frequency: "Diario", chemical: "Detergente Alcalino Sanicid", concentration: "1.5%", status: "Conforme 🟢", verifiedBy: "Cristian Fonseca" },
+    { id: "LD-003", date: "2026-08-23", area: "Zona de Envasado & Llenadora", frequency: "Diario", chemical: "Alcohol Antiséptico 70%", concentration: "70%", status: "Conforme 🟢", verifiedBy: "Ing. Julio Roberto Cristancho" }
+  ],
+
+  // 7. SEED DATOS MANEJO DE RESIDUOS (FO-RS-001)
+  wasteManagementLogs: [
+    { id: "RS-001", date: "2026-08-24", wasteType: "Bagazo de Malta Orgánico", quantityKg: "450 kg", manager: "Granja Porcina Sabana (Compostaje)", status: "Entregado 🟢", verifiedBy: "Cristian Fonseca" },
+    { id: "RS-002", date: "2026-08-22", wasteType: "Trub & Levadura Residual", quantityKg: "80 L", manager: "Planta Biogás Local", status: "Entregado 🟢", verifiedBy: "Ing. Julio Roberto Cristancho" },
+    { id: "RS-003", date: "2026-08-20", wasteType: "Empaques Cartón & Plástico Reciclable", quantityKg: "35 kg", manager: "Asociación Recicladores Norte", status: "Entregado 🟢", verifiedBy: "Cristian Fonseca" }
+  ],
+
+  // 8. SEED DATOS MANTENIMIENTO (FO-MTTO-001)
+  maintenanceLogs: [
+    { id: "MTTO-001", date: "2026-08-15", equipment: "Chiller de Glicol Principal", type: "Preventivo", description: "Cambio de filtros y verificación nivel de glicol.", parts: "Filtro de aire, 5L Glicol USP", technician: "TecniFrio Sabana S.A.S.", status: "Completado 🟢" },
+    { id: "MTTO-002", date: "2026-08-10", equipment: "Molino de Rodillos de Malta", type: "Preventivo", description: "Ajuste de luz de rodillos (1.2mm) y lubricación de rodamientos.", parts: "Grasa de grado alimenticio NSF H1", technician: "Ing. Julio Roberto Cristancho", status: "Completado 🟢" },
+    { id: "MTTO-003", date: "2026-07-28", equipment: "Intercambiador de Calor a Placas", type: "Preventivo", description: "Desarme, empaquetadura y lavado químico CIP desincrustante.", parts: "Empaques EPDM Grado Alimenticio", technician: "Mantenimiento NORTA", status: "Completado 🟢" }
+  ],
+
+  // 9. SEED DATOS MUESTREO & CUARTOS FRÍOS (FO-MUE-001 / FO-CF-001)
+  samplingLogs: [
+    { id: "MUE-001", date: "2026-08-24", sampleObject: "NORTA Cumbre (Lote LOT-2026-088)", testType: "Microbiológico & Fisicoquímico", sampleVolume: "2 Botellas 500ml", lab: "Biotecnología & Alimentos Lab Acreditado", result: "Conforme (Ausencia de Coliformes & Silvestres) 🟢", verifiedBy: "Ing. Julio Roberto Cristancho" },
+    { id: "MUE-002", date: "2026-08-15", sampleObject: "Agua Potable Salida Filtro Carbón", testType: "Fisicoquímico Completo (Decreto 2115)", sampleVolume: "1 Litro", lab: "Laboratorio Ambiental Sabana", result: "Cumple Norma Decreto 2115 🟢", verifiedBy: "Ing. Julio Roberto Cristancho" }
+  ],
+  coldRoomLogs: [
+    { id: "CF-001", date: "2026-08-24", time: "08:00", tempColdRoom1: 2.5, tempColdRoom2: 3.0, status: "Conforme 🟢 (Rango 0°C a 4°C)", verifiedBy: "Cristian Fonseca" },
+    { id: "CF-002", date: "2026-08-23", time: "08:00", tempColdRoom1: 2.1, tempColdRoom2: 2.8, status: "Conforme 🟢 (Rango 0°C a 4°C)", verifiedBy: "Cristian Fonseca" }
+  ],
+
+  // 10. SEED DATOS PROVEEDORES (FO-PROV-001)
+  suppliersList: [
+    { id: "PROV-001", name: "Maltería Andina S.A.S.", nit: "890.102.391-1", contact: "Carlos Mendoza", productProvided: "Maltas Base Pale Ale y Pilsner", phone: "310-482-9102", email: "ventas@malteriaandina.com", score: 4.9, status: "Homologado 🟢" },
+    { id: "PROV-002", name: "Yakima Chief Hops", nit: "900.291.029-4", contact: "Lorena Gómez", productProvided: "Lúpulos T-90 Citra, Mosaic, Cascade", phone: "315-920-1920", email: "latam@yakimachief.com", score: 5.0, status: "Homologado 🟢" },
+    { id: "PROV-003", name: "Envases Rústicos S.A.", nit: "800.192.301-8", contact: "Hernando Silva", productProvided: "Botellas Cerámicas y Vidrio 500ml", phone: "300-192-8301", email: "contacto@envasesrusticos.com", score: 4.7, status: "Homologado 🟢" }
+  ],
+
+  // 11. SEED DATOS TRAZABILIDAD (FO-TRA-001 / REGISTRO CONTRAMUESTRAS)
+  retainedSamplesLogs: [
+    { id: "TRA-001", date: "2026-08-24", beerName: "NORTA Cumbre", batchLot: "LOT-2026-088", presentation: "Botella 500ml", units: 3, shelfLocation: "Estante A-2 (Contramuestras)", responsible: "Ing. Julio Roberto Cristancho", notes: "Contramuestra de retenido reglamentaria." },
+    { id: "TRA-002", date: "2026-08-20", beerName: "NORTA Niebla", batchLot: "LOT-2026-087", presentation: "Botella 500ml", units: 3, shelfLocation: "Estante A-1 (Contramuestras)", responsible: "Ing. Julio Roberto Cristancho", notes: "Lote de producción con COA verificado." },
+    { id: "TRA-003", date: "2026-08-15", beerName: "NORTA Montana", batchLot: "LOT-2026-086", presentation: "Barril 30L Stainless", units: 1, shelfLocation: "Cámara Fría B-1", responsible: "Cristian Fonseca", notes: "Retenido de barril B2B." }
+  ],
+
+  invimaControlSystem: [
+    {
+        "id": "PRG-01",
+        "folderName": "1. AGUA POTABLE",
+        "title": "1. AGUA POTABLE",
+        "fileCount": 3,
+        "status": "Vigente 🟢",
+        "files": [
+            {
+                "id": "INV-DOC-01-01",
+                "name": "2. FO CONTROL DE AGUA POTABLE.docx",
+                "relPath": "./invima_docs/1. AGUA POTABLE/2. FO CONTROL DE AGUA POTABLE.docx",
+                "size": "85.2 KB",
+                "extension": ".docx",
+                "type": "Microsoft Word",
+                "status": "Vigente & Aprobado",
+                "updatedAt": "2026-08-24"
+            },
+            {
+                "id": "INV-DOC-01-02",
+                "name": "3. Programa de Agua NORTA V01.docx",
+                "relPath": "./invima_docs/1. AGUA POTABLE/3. Programa de Agua NORTA V01.docx",
+                "size": "5.09 MB",
+                "extension": ".docx",
+                "type": "Microsoft Word",
+                "status": "Vigente & Aprobado",
+                "updatedAt": "2026-08-24"
+            },
+            {
+                "id": "INV-DOC-01-03",
+                "name": "INSTRUCTIVOS ANÁLISIS AGUA - Norta.xlsx",
+                "relPath": "./invima_docs/1. AGUA POTABLE/INSTRUCTIVOS ANÁLISIS AGUA - Norta.xlsx",
+                "size": "34.5 KB",
+                "extension": ".xlsx",
+                "type": "Microsoft Excel",
+                "status": "Vigente & Aprobado",
+                "updatedAt": "2026-08-24"
+            }
+        ]
+    },
+    {
+        "id": "PRG-02",
+        "folderName": "2. ALMACENAMIENTO",
+        "title": "2. ALMACENAMIENTO",
+        "fileCount": 2,
+        "status": "Vigente 🟢",
+        "files": [
+            {
+                "id": "INV-DOC-02-01",
+                "name": "FORMATO DE INGRESO DE PRODUCTOS - Norta.xlsx",
+                "relPath": "./invima_docs/2. ALMACENAMIENTO/FORMATO DE INGRESO DE PRODUCTOS - Norta.xlsx",
+                "size": "105.6 KB",
+                "extension": ".xlsx",
+                "type": "Microsoft Excel",
+                "status": "Vigente & Aprobado",
+                "updatedAt": "2026-08-24"
+            },
+            {
+                "id": "INV-DOC-02-02",
+                "name": "PROGRAMA DE ALMACENAMIENTO - Norta.docx",
+                "relPath": "./invima_docs/2. ALMACENAMIENTO/PROGRAMA DE ALMACENAMIENTO - Norta.docx",
+                "size": "3.75 MB",
+                "extension": ".docx",
+                "type": "Microsoft Word",
+                "status": "Vigente & Aprobado",
+                "updatedAt": "2026-08-24"
+            }
+        ]
+    },
+    {
+        "id": "PRG-03",
+        "folderName": "3. CALIBRACION",
+        "title": "3. CALIBRACION",
+        "fileCount": 5,
+        "status": "Vigente 🟢",
+        "files": [
+            {
+                "id": "INV-DOC-03-01",
+                "name": "6. Programa de Calibración NORTA V1.docx",
+                "relPath": "./invima_docs/3. CALIBRACION/6. Programa de Calibración NORTA V1.docx",
+                "size": "60.4 KB",
+                "extension": ".docx",
+                "type": "Microsoft Word",
+                "status": "Vigente & Aprobado",
+                "updatedAt": "2026-08-24"
+            },
+            {
+                "id": "INV-DOC-03-02",
+                "name": "CRONOGRAMA CALIBRACION .xlsx",
+                "relPath": "./invima_docs/3. CALIBRACION/CRONOGRAMA CALIBRACION .xlsx",
+                "size": "91.9 KB",
+                "extension": ".xlsx",
+                "type": "Microsoft Excel",
+                "status": "Vigente & Aprobado",
+                "updatedAt": "2026-08-24"
+            },
+            {
+                "id": "INV-DOC-03-03",
+                "name": "FORMATOS DE CALIBRACION.xlsx",
+                "relPath": "./invima_docs/3. CALIBRACION/FORMATOS DE CALIBRACION.xlsx",
+                "size": "176.3 KB",
+                "extension": ".xlsx",
+                "type": "Microsoft Excel",
+                "status": "Vigente & Aprobado",
+                "updatedAt": "2026-08-24"
+            },
+            {
+                "id": "INV-DOC-03-04",
+                "name": "PROGRAMA DE CALI BRACION .docx",
+                "relPath": "./invima_docs/3. CALIBRACION/PROGRAMA DE CALI BRACION .docx",
+                "size": "3.25 MB",
+                "extension": ".docx",
+                "type": "Microsoft Word",
+                "status": "Vigente & Aprobado",
+                "updatedAt": "2026-08-24"
+            },
+            {
+                "id": "INV-DOC-03-05",
+                "name": "VERIFICACIÓN PHMETRO .xlsx",
+                "relPath": "./invima_docs/3. CALIBRACION/VERIFICACIÓN PHMETRO .xlsx",
+                "size": "51.9 KB",
+                "extension": ".xlsx",
+                "type": "Microsoft Excel",
+                "status": "Vigente & Aprobado",
+                "updatedAt": "2026-08-24"
+            }
+        ]
+    },
+    {
+        "id": "PRG-04",
+        "folderName": "4. CAPACITACION",
+        "title": "4. CAPACITACION",
+        "fileCount": 3,
+        "status": "Vigente 🟢",
+        "files": [
+            {
+                "id": "INV-DOC-04-01",
+                "name": "7. Programa de capacitación NORTA V1.docx",
+                "relPath": "./invima_docs/4. CAPACITACION/7. Programa de capacitación NORTA V1.docx",
+                "size": "4.18 MB",
+                "extension": ".docx",
+                "type": "Microsoft Word",
+                "status": "Vigente & Aprobado",
+                "updatedAt": "2026-08-24"
+            },
+            {
+                "id": "INV-DOC-04-02",
+                "name": "ASISTENCIA CAPACITACIONES - Norta.xlsx",
+                "relPath": "./invima_docs/4. CAPACITACION/ASISTENCIA CAPACITACIONES - Norta.xlsx",
+                "size": "43.2 KB",
+                "extension": ".xlsx",
+                "type": "Microsoft Excel",
+                "status": "Vigente & Aprobado",
+                "updatedAt": "2026-08-24"
+            },
+            {
+                "id": "INV-DOC-04-03",
+                "name": "CRONOGRAMA CAPACITACIONES  - Norta.xlsx",
+                "relPath": "./invima_docs/4. CAPACITACION/CRONOGRAMA CAPACITACIONES  - Norta.xlsx",
+                "size": "117.7 KB",
+                "extension": ".xlsx",
+                "type": "Microsoft Excel",
+                "status": "Vigente & Aprobado",
+                "updatedAt": "2026-08-24"
+            }
+        ]
+    },
+    {
+        "id": "PRG-05",
+        "folderName": "5. CONTROL DE PLAGAS",
+        "title": "5. CONTROL DE PLAGAS",
+        "fileCount": 3,
+        "status": "Vigente 🟢",
+        "files": [
+            {
+                "id": "INV-DOC-05-01",
+                "name": "1. FO L&D.docx",
+                "relPath": "./invima_docs/5. CONTROL DE PLAGAS/1. FO L&D.docx",
+                "size": "62.5 KB",
+                "extension": ".docx",
+                "type": "Microsoft Word",
+                "status": "Vigente & Aprobado",
+                "updatedAt": "2026-08-24"
+            },
+            {
+                "id": "INV-DOC-05-02",
+                "name": "2. Prog. Control de plagas NORTA V01.docx",
+                "relPath": "./invima_docs/5. CONTROL DE PLAGAS/2. Prog. Control de plagas NORTA V01.docx",
+                "size": "3.81 MB",
+                "extension": ".docx",
+                "type": "Microsoft Word",
+                "status": "Vigente & Aprobado",
+                "updatedAt": "2026-08-24"
+            },
+            {
+                "id": "INV-DOC-05-03",
+                "name": "4. FO CONTROL DE PLAGAS.docx",
+                "relPath": "./invima_docs/5. CONTROL DE PLAGAS/4. FO CONTROL DE PLAGAS.docx",
+                "size": "63.8 KB",
+                "extension": ".docx",
+                "type": "Microsoft Word",
+                "status": "Vigente & Aprobado",
+                "updatedAt": "2026-08-24"
+            }
+        ]
+    },
+    {
+        "id": "PRG-06",
+        "folderName": "6. LIMPIEZA Y DESINFECCIÓN",
+        "title": "6. LIMPIEZA Y DESINFECCIÓN",
+        "fileCount": 4,
+        "status": "Vigente 🟢",
+        "files": [
+            {
+                "id": "INV-DOC-06-01",
+                "name": "1. FO L&D.docx",
+                "relPath": "./invima_docs/6. LIMPIEZA Y DESINFECCIÓN/1. FO L&D.docx",
+                "size": "62.5 KB",
+                "extension": ".docx",
+                "type": "Microsoft Word",
+                "status": "Vigente & Aprobado",
+                "updatedAt": "2026-08-24"
+            },
+            {
+                "id": "INV-DOC-06-02",
+                "name": "1. Programa de LYD NORTA V01.docx",
+                "relPath": "./invima_docs/6. LIMPIEZA Y DESINFECCIÓN/1. Programa de LYD NORTA V01.docx",
+                "size": "4.34 MB",
+                "extension": ".docx",
+                "type": "Microsoft Word",
+                "status": "Vigente & Aprobado",
+                "updatedAt": "2026-08-24"
+            },
+            {
+                "id": "INV-DOC-06-03",
+                "name": "5. FO L&D PRODUCTO (2).docx",
+                "relPath": "./invima_docs/6. LIMPIEZA Y DESINFECCIÓN/5. FO L&D PRODUCTO (2).docx",
+                "size": "47.6 KB",
+                "extension": ".docx",
+                "type": "Microsoft Word",
+                "status": "Vigente & Aprobado",
+                "updatedAt": "2026-08-24"
+            },
+            {
+                "id": "INV-DOC-06-04",
+                "name": "BPM-PR-01a25   PROCEDIMIENTOS LIMPIEZA Y DESINFECCION.xlsx",
+                "relPath": "./invima_docs/6. LIMPIEZA Y DESINFECCIÓN/BPM-PR-01a25   PROCEDIMIENTOS LIMPIEZA Y DESINFECCION.xlsx",
+                "size": "600.6 KB",
+                "extension": ".xlsx",
+                "type": "Microsoft Excel",
+                "status": "Vigente & Aprobado",
+                "updatedAt": "2026-08-24"
+            }
+        ]
+    },
+    {
+        "id": "PRG-07",
+        "folderName": "7. MANEJO DE RESIDUOS",
+        "title": "7. MANEJO DE RESIDUOS",
+        "fileCount": 3,
+        "status": "Vigente 🟢",
+        "files": [
+            {
+                "id": "INV-DOC-07-01",
+                "name": "3. FO MANEJO DE RESIDUOS SÓLIDOS.docx",
+                "relPath": "./invima_docs/7. MANEJO DE RESIDUOS/3. FO MANEJO DE RESIDUOS SÓLIDOS.docx",
+                "size": "47.7 KB",
+                "extension": ".docx",
+                "type": "Microsoft Word",
+                "status": "Vigente & Aprobado",
+                "updatedAt": "2026-08-24"
+            },
+            {
+                "id": "INV-DOC-07-02",
+                "name": "4. Programa de Residuos Sólidos NORTA V01.docx",
+                "relPath": "./invima_docs/7. MANEJO DE RESIDUOS/4. Programa de Residuos Sólidos NORTA V01.docx",
+                "size": "1.04 MB",
+                "extension": ".docx",
+                "type": "Microsoft Word",
+                "status": "Vigente & Aprobado",
+                "updatedAt": "2026-08-24"
+            },
+            {
+                "id": "INV-DOC-07-03",
+                "name": "FORMATOS RESIDUOS - Norta.xlsx",
+                "relPath": "./invima_docs/7. MANEJO DE RESIDUOS/FORMATOS RESIDUOS - Norta.xlsx",
+                "size": "43.3 KB",
+                "extension": ".xlsx",
+                "type": "Microsoft Excel",
+                "status": "Vigente & Aprobado",
+                "updatedAt": "2026-08-24"
+            }
+        ]
+    },
+    {
+        "id": "PRG-08",
+        "folderName": "8. MANTENIMIENTO",
+        "title": "8. MANTENIMIENTO",
+        "fileCount": 5,
+        "status": "Vigente 🟢",
+        "files": [
+            {
+                "id": "INV-DOC-08-01",
+                "name": "10. FO VERIFICACION EQUIPOS.docx",
+                "relPath": "./invima_docs/8. MANTENIMIENTO/10. FO VERIFICACION EQUIPOS.docx",
+                "size": "46.1 KB",
+                "extension": ".docx",
+                "type": "Microsoft Word",
+                "status": "Vigente & Aprobado",
+                "updatedAt": "2026-08-24"
+            },
+            {
+                "id": "INV-DOC-08-02",
+                "name": "11. FO RGS MANTENIMIENTO.docx",
+                "relPath": "./invima_docs/8. MANTENIMIENTO/11. FO RGS MANTENIMIENTO.docx",
+                "size": "54.1 KB",
+                "extension": ".docx",
+                "type": "Microsoft Word",
+                "status": "Vigente & Aprobado",
+                "updatedAt": "2026-08-24"
+            },
+            {
+                "id": "INV-DOC-08-03",
+                "name": "5. Programa de Mantenimiento NORTA V1.docx",
+                "relPath": "./invima_docs/8. MANTENIMIENTO/5. Programa de Mantenimiento NORTA V1.docx",
+                "size": "4.33 MB",
+                "extension": ".docx",
+                "type": "Microsoft Word",
+                "status": "Vigente & Aprobado",
+                "updatedAt": "2026-08-24"
+            },
+            {
+                "id": "INV-DOC-08-04",
+                "name": "9. FO MVT CUARTOS FRIOS.docx",
+                "relPath": "./invima_docs/8. MANTENIMIENTO/9. FO MVT CUARTOS FRIOS.docx",
+                "size": "47.2 KB",
+                "extension": ".docx",
+                "type": "Microsoft Word",
+                "status": "Vigente & Aprobado",
+                "updatedAt": "2026-08-24"
+            },
+            {
+                "id": "INV-DOC-08-05",
+                "name": "CRONOGRAMA MANTENIMIENTO - Norta.xlsx",
+                "relPath": "./invima_docs/8. MANTENIMIENTO/CRONOGRAMA MANTENIMIENTO - Norta.xlsx",
+                "size": "179.7 KB",
+                "extension": ".xlsx",
+                "type": "Microsoft Excel",
+                "status": "Vigente & Aprobado",
+                "updatedAt": "2026-08-24"
+            }
+        ]
+    },
+    {
+        "id": "PRG-09",
+        "folderName": "9. MUESTREO",
+        "title": "9. MUESTREO",
+        "fileCount": 5,
+        "status": "Vigente 🟢",
+        "files": [
+            {
+                "id": "INV-DOC-09-01",
+                "name": "7. FO CUARTOS FRIOS.xlsx",
+                "relPath": "./invima_docs/9. MUESTREO/7. FO CUARTOS FRIOS.xlsx",
+                "size": "58.3 KB",
+                "extension": ".xlsx",
+                "type": "Microsoft Excel",
+                "status": "Vigente & Aprobado",
+                "updatedAt": "2026-08-24"
+            },
+            {
+                "id": "INV-DOC-09-02",
+                "name": "8. FO RECEPCION MATERIAS PRIMAS.docx",
+                "relPath": "./invima_docs/9. MUESTREO/8. FO RECEPCION MATERIAS PRIMAS.docx",
+                "size": "50.8 KB",
+                "extension": ".docx",
+                "type": "Microsoft Word",
+                "status": "Vigente & Aprobado",
+                "updatedAt": "2026-08-24"
+            },
+            {
+                "id": "INV-DOC-09-03",
+                "name": "CRONOGRAMA DE MUESTREO LABORTORIO EXTERNO - Norta.xlsx",
+                "relPath": "./invima_docs/9. MUESTREO/CRONOGRAMA DE MUESTREO LABORTORIO EXTERNO - Norta.xlsx",
+                "size": "43.3 KB",
+                "extension": ".xlsx",
+                "type": "Microsoft Excel",
+                "status": "Vigente & Aprobado",
+                "updatedAt": "2026-08-24"
+            },
+            {
+                "id": "INV-DOC-09-04",
+                "name": "PROCEDIMIENTO INSPECCION DE MP   - Norta.docx",
+                "relPath": "./invima_docs/9. MUESTREO/PROCEDIMIENTO INSPECCION DE MP   - Norta.docx",
+                "size": "3.94 MB",
+                "extension": ".docx",
+                "type": "Microsoft Word",
+                "status": "Vigente & Aprobado",
+                "updatedAt": "2026-08-24"
+            },
+            {
+                "id": "INV-DOC-09-05",
+                "name": "PROGRAMA DE MUESTREO  - Norta.docx",
+                "relPath": "./invima_docs/9. MUESTREO/PROGRAMA DE MUESTREO  - Norta.docx",
+                "size": "3.94 MB",
+                "extension": ".docx",
+                "type": "Microsoft Word",
+                "status": "Vigente & Aprobado",
+                "updatedAt": "2026-08-24"
+            }
+        ]
+    },
+    {
+        "id": "PRG-10",
+        "folderName": "10. PROVEEDORES",
+        "title": "10. PROVEEDORES",
+        "fileCount": 2,
+        "status": "Vigente 🟢",
+        "files": [
+            {
+                "id": "INV-DOC-10-01",
+                "name": "8. Programa Control de Proveedores NORTA V1.docx",
+                "relPath": "./invima_docs/10. PROVEEDORES/8. Programa Control de Proveedores NORTA V1.docx",
+                "size": "3.55 MB",
+                "extension": ".docx",
+                "type": "Microsoft Word",
+                "status": "Vigente & Aprobado",
+                "updatedAt": "2026-08-24"
+            },
+            {
+                "id": "INV-DOC-10-02",
+                "name": "LISTADO DE PROVEEDORES.xlsx",
+                "relPath": "./invima_docs/10. PROVEEDORES/LISTADO DE PROVEEDORES.xlsx",
+                "size": "43.1 KB",
+                "extension": ".xlsx",
+                "type": "Microsoft Excel",
+                "status": "Vigente & Aprobado",
+                "updatedAt": "2026-08-24"
+            }
+        ]
+    },
+    {
+        "id": "PRG-11",
+        "folderName": "11. TRAZABILIDAD",
+        "title": "11. TRAZABILIDAD",
+        "fileCount": 4,
+        "status": "Vigente 🟢",
+        "files": [
+            {
+                "id": "INV-DOC-11-01",
+                "name": "6. FO CONTROL PRODUCCION.docx",
+                "relPath": "./invima_docs/11. TRAZABILIDAD/6. FO CONTROL PRODUCCION.docx",
+                "size": "70.4 KB",
+                "extension": ".docx",
+                "type": "Microsoft Word",
+                "status": "Vigente & Aprobado",
+                "updatedAt": "2026-08-24"
+            },
+            {
+                "id": "INV-DOC-11-02",
+                "name": "FORMATO INSPECCIÓN VEHÍCULO.xlsx",
+                "relPath": "./invima_docs/11. TRAZABILIDAD/FORMATO INSPECCIÓN VEHÍCULO.xlsx",
+                "size": "43.7 KB",
+                "extension": ".xlsx",
+                "type": "Microsoft Excel",
+                "status": "Vigente & Aprobado",
+                "updatedAt": "2026-08-24"
+            },
+            {
+                "id": "INV-DOC-11-03",
+                "name": "PROGRAMA DE TRAZABILIDAD - Norta.docx",
+                "relPath": "./invima_docs/11. TRAZABILIDAD/PROGRAMA DE TRAZABILIDAD - Norta.docx",
+                "size": "3.86 MB",
+                "extension": ".docx",
+                "type": "Microsoft Word",
+                "status": "Vigente & Aprobado",
+                "updatedAt": "2026-08-24"
+            },
+            {
+                "id": "INV-DOC-11-04",
+                "name": "REGISTRO CONTRAMUESTRAS.xlsx",
+                "relPath": "./invima_docs/11. TRAZABILIDAD/REGISTRO CONTRAMUESTRAS.xlsx",
+                "size": "42.2 KB",
+                "extension": ".xlsx",
+                "type": "Microsoft Excel",
+                "status": "Vigente & Aprobado",
+                "updatedAt": "2026-08-24"
+            }
+        ]
+    }
+],
+
+  // 8. MATRIZ COMPARATIVA INTEGRADA Y DIAGNÓSTICO ARQUITECTÓNICO (BREWW, BEER30, EKOS, ODOO vs NORTA OS)
+  architectureBenchmarking: {
+    matrix: [
+      { platform: "Breww", focus: "Producción, trazabilidad B2B y logística multi-sitio", crm: "Incluido (Portal Autopedidos B2B)", docRepo: "Adjuntos por lote, receta e insumos", accounting: "QuickBooks, Xero, Sage", learningCurve: "Baja (Nativa Cervecerías)" },
+      { platform: "Beer30", focus: "Análisis fermentativo, COGS tiempo real y genealogía", crm: "Módulo Add-on fuerza comercial", docRepo: "Registro digital CIP y calidad", accounting: "QuickBooks, Xero", learningCurve: "Baja - Media" },
+      { platform: "Ekos Brewmaster", focus: "Gestión operativa 'grain-to-glass' y financiera", crm: "Integrado", docRepo: "Fichas técnicas y reportes de mermas", accounting: "QuickBooks, NetSuite", learningCurve: "Media" },
+      { platform: "Odoo ERP", focus: "ERP Genérico Abierto y Modular Configurable", crm: "Avanzado", docRepo: "Módulo nativo Odoo Documents con versiones", accounting: "Módulo nativo Odoo Accounting / DIAN", learningCurve: "Media - Alta" },
+      { platform: "NORTA OS 5.0", focus: "Suite Integrada de Gestión Cervecera Escusable (React)", crm: "Integrado + Portal Autopedidos B2B", docRepo: "Repositorio DMS (BPM, INVIMA y COA)", accounting: "Exportador CSV / Siigo / QuickBooks", learningCurve: "Baja (Interfaz Intuitiva NORTA)" }
+    ]
+  }
+};

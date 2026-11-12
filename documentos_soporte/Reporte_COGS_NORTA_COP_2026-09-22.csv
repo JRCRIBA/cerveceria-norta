@@ -1,0 +1,5 @@
+id,beerName,style,batchVolumeL,maltsCostCOP,hopsCostCOP,yeastCostCOP,packagingCostCOP,energyWaterCostCOP,finishedGoodsSKUs,totalBatchInsumosCOP,costPerLiterCOP,totalInventoryValCOP,totalUnits,lineMarginPct
+LINE-MONTANA,NORTA Montana,Amber Mountain Ale,1000,1850000,820000,410000,950000,380000,[object Object],4410000,4410,3705,19,65.1%
+LINE-TEMPESTAD,NORTA Tempestad,Storm Cold IPA,1000,1720000,1450000,410000,1100000,390000,[object Object],5070000,5070,7030,380,61.1%
+LINE-CUMBRE,NORTA Cumbre,Imperial Golden Ale,1000,2150000,980000,450000,1350000,420000,[object Object],5350000,5350,5510,95,62.1%
+LINE-NIEBLA,NORTA Niebla,Witbier / Hazy Ale,1000,1680000,1120000,420000,1080000,370000,[object Object],4670000,4670,3802.5,195,61.0%

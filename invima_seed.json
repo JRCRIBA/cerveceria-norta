@@ -1,0 +1,491 @@
+[
+  {
+    "id": "PRG-01",
+    "folderName": "1. AGUA POTABLE",
+    "title": "1. AGUA POTABLE",
+    "fileCount": 3,
+    "status": "Vigente 🟢",
+    "files": [
+      {
+        "id": "INV-DOC-01-01",
+        "name": "2. FO CONTROL DE AGUA POTABLE.docx",
+        "relPath": "./invima_docs/1. AGUA POTABLE/2. FO CONTROL DE AGUA POTABLE.docx",
+        "size": "85.2 KB",
+        "extension": ".docx",
+        "type": "Microsoft Word",
+        "status": "Vigente & Aprobado",
+        "updatedAt": "2026-08-24"
+      },
+      {
+        "id": "INV-DOC-01-02",
+        "name": "3. Programa de Agua FURIA V01 - Norta.docx",
+        "relPath": "./invima_docs/1. AGUA POTABLE/3. Programa de Agua FURIA V01 - Norta.docx",
+        "size": "5.09 MB",
+        "extension": ".docx",
+        "type": "Microsoft Word",
+        "status": "Vigente & Aprobado",
+        "updatedAt": "2026-08-24"
+      },
+      {
+        "id": "INV-DOC-01-03",
+        "name": "INSTRUCTIVOS ANÁLISIS AGUA - Norta.xlsx",
+        "relPath": "./invima_docs/1. AGUA POTABLE/INSTRUCTIVOS ANÁLISIS AGUA - Norta.xlsx",
+        "size": "34.5 KB",
+        "extension": ".xlsx",
+        "type": "Microsoft Excel",
+        "status": "Vigente & Aprobado",
+        "updatedAt": "2026-08-24"
+      }
+    ]
+  },
+  {
+    "id": "PRG-02",
+    "folderName": "2. ALMACENAMIENTO",
+    "title": "2. ALMACENAMIENTO",
+    "fileCount": 2,
+    "status": "Vigente 🟢",
+    "files": [
+      {
+        "id": "INV-DOC-02-01",
+        "name": "FORMATO DE INGRESO DE PRODUCTOS - Norta.xlsx",
+        "relPath": "./invima_docs/2. ALMACENAMIENTO/FORMATO DE INGRESO DE PRODUCTOS - Norta.xlsx",
+        "size": "105.6 KB",
+        "extension": ".xlsx",
+        "type": "Microsoft Excel",
+        "status": "Vigente & Aprobado",
+        "updatedAt": "2026-08-24"
+      },
+      {
+        "id": "INV-DOC-02-02",
+        "name": "PROGRAMA DE ALMACENAMIENTO - Norta.docx",
+        "relPath": "./invima_docs/2. ALMACENAMIENTO/PROGRAMA DE ALMACENAMIENTO - Norta.docx",
+        "size": "3.75 MB",
+        "extension": ".docx",
+        "type": "Microsoft Word",
+        "status": "Vigente & Aprobado",
+        "updatedAt": "2026-08-24"
+      }
+    ]
+  },
+  {
+    "id": "PRG-03",
+    "folderName": "3. CALIBRACION",
+    "title": "3. CALIBRACION",
+    "fileCount": 5,
+    "status": "Vigente 🟢",
+    "files": [
+      {
+        "id": "INV-DOC-03-01",
+        "name": "6. Programa de Calibración FURIA V1.docx",
+        "relPath": "./invima_docs/3. CALIBRACION/6. Programa de Calibración FURIA V1.docx",
+        "size": "60.4 KB",
+        "extension": ".docx",
+        "type": "Microsoft Word",
+        "status": "Vigente & Aprobado",
+        "updatedAt": "2026-08-24"
+      },
+      {
+        "id": "INV-DOC-03-02",
+        "name": "CRONOGRAMA CALIBRACION .xlsx",
+        "relPath": "./invima_docs/3. CALIBRACION/CRONOGRAMA CALIBRACION .xlsx",
+        "size": "91.9 KB",
+        "extension": ".xlsx",
+        "type": "Microsoft Excel",
+        "status": "Vigente & Aprobado",
+        "updatedAt": "2026-08-24"
+      },
+      {
+        "id": "INV-DOC-03-03",
+        "name": "FORMATOS DE CALIBRACION.xlsx",
+        "relPath": "./invima_docs/3. CALIBRACION/FORMATOS DE CALIBRACION.xlsx",
+        "size": "176.3 KB",
+        "extension": ".xlsx",
+        "type": "Microsoft Excel",
+        "status": "Vigente & Aprobado",
+        "updatedAt": "2026-08-24"
+      },
+      {
+        "id": "INV-DOC-03-04",
+        "name": "PROGRAMA DE CALI BRACION .docx",
+        "relPath": "./invima_docs/3. CALIBRACION/PROGRAMA DE CALI BRACION .docx",
+        "size": "3.25 MB",
+        "extension": ".docx",
+        "type": "Microsoft Word",
+        "status": "Vigente & Aprobado",
+        "updatedAt": "2026-08-24"
+      },
+      {
+        "id": "INV-DOC-03-05",
+        "name": "VERIFICACIÓN PHMETRO .xlsx",
+        "relPath": "./invima_docs/3. CALIBRACION/VERIFICACIÓN PHMETRO .xlsx",
+        "size": "51.9 KB",
+        "extension": ".xlsx",
+        "type": "Microsoft Excel",
+        "status": "Vigente & Aprobado",
+        "updatedAt": "2026-08-24"
+      }
+    ]
+  },
+  {
+    "id": "PRG-04",
+    "folderName": "4. CAPACITACION",
+    "title": "4. CAPACITACION",
+    "fileCount": 3,
+    "status": "Vigente 🟢",
+    "files": [
+      {
+        "id": "INV-DOC-04-01",
+        "name": "7. Programa de capacitación  FURIA V1.docx",
+        "relPath": "./invima_docs/4. CAPACITACION/7. Programa de capacitación  FURIA V1.docx",
+        "size": "4.18 MB",
+        "extension": ".docx",
+        "type": "Microsoft Word",
+        "status": "Vigente & Aprobado",
+        "updatedAt": "2026-08-24"
+      },
+      {
+        "id": "INV-DOC-04-02",
+        "name": "ASISTENCIA CAPACITACIONES - Norta.xlsx",
+        "relPath": "./invima_docs/4. CAPACITACION/ASISTENCIA CAPACITACIONES - Norta.xlsx",
+        "size": "43.2 KB",
+        "extension": ".xlsx",
+        "type": "Microsoft Excel",
+        "status": "Vigente & Aprobado",
+        "updatedAt": "2026-08-24"
+      },
+      {
+        "id": "INV-DOC-04-03",
+        "name": "CRONOGRAMA CAPACITACIONES  - Norta.xlsx",
+        "relPath": "./invima_docs/4. CAPACITACION/CRONOGRAMA CAPACITACIONES  - Norta.xlsx",
+        "size": "117.7 KB",
+        "extension": ".xlsx",
+        "type": "Microsoft Excel",
+        "status": "Vigente & Aprobado",
+        "updatedAt": "2026-08-24"
+      }
+    ]
+  },
+  {
+    "id": "PRG-05",
+    "folderName": "5. CONTROL DE PLAGAS",
+    "title": "5. CONTROL DE PLAGAS",
+    "fileCount": 3,
+    "status": "Vigente 🟢",
+    "files": [
+      {
+        "id": "INV-DOC-05-01",
+        "name": "1. FO L&D.docx",
+        "relPath": "./invima_docs/5. CONTROL DE PLAGAS/1. FO L&D.docx",
+        "size": "62.5 KB",
+        "extension": ".docx",
+        "type": "Microsoft Word",
+        "status": "Vigente & Aprobado",
+        "updatedAt": "2026-08-24"
+      },
+      {
+        "id": "INV-DOC-05-02",
+        "name": "2. Prog. Control de plagas FURIA V01.docx",
+        "relPath": "./invima_docs/5. CONTROL DE PLAGAS/2. Prog. Control de plagas FURIA V01.docx",
+        "size": "3.81 MB",
+        "extension": ".docx",
+        "type": "Microsoft Word",
+        "status": "Vigente & Aprobado",
+        "updatedAt": "2026-08-24"
+      },
+      {
+        "id": "INV-DOC-05-03",
+        "name": "4. FO CONTROL DE PLAGAS.docx",
+        "relPath": "./invima_docs/5. CONTROL DE PLAGAS/4. FO CONTROL DE PLAGAS.docx",
+        "size": "63.8 KB",
+        "extension": ".docx",
+        "type": "Microsoft Word",
+        "status": "Vigente & Aprobado",
+        "updatedAt": "2026-08-24"
+      }
+    ]
+  },
+  {
+    "id": "PRG-06",
+    "folderName": "6. LIMPIEZA Y DESINFECCIÓN",
+    "title": "6. LIMPIEZA Y DESINFECCIÓN",
+    "fileCount": 4,
+    "status": "Vigente 🟢",
+    "files": [
+      {
+        "id": "INV-DOC-06-01",
+        "name": "1. FO L&D.docx",
+        "relPath": "./invima_docs/6. LIMPIEZA Y DESINFECCIÓN/1. FO L&D.docx",
+        "size": "62.5 KB",
+        "extension": ".docx",
+        "type": "Microsoft Word",
+        "status": "Vigente & Aprobado",
+        "updatedAt": "2026-08-24"
+      },
+      {
+        "id": "INV-DOC-06-02",
+        "name": "1. Programa de LYD FURIA V01.docx",
+        "relPath": "./invima_docs/6. LIMPIEZA Y DESINFECCIÓN/1. Programa de LYD FURIA V01.docx",
+        "size": "4.34 MB",
+        "extension": ".docx",
+        "type": "Microsoft Word",
+        "status": "Vigente & Aprobado",
+        "updatedAt": "2026-08-24"
+      },
+      {
+        "id": "INV-DOC-06-03",
+        "name": "5. FO L&D PRODUCTO (2).docx",
+        "relPath": "./invima_docs/6. LIMPIEZA Y DESINFECCIÓN/5. FO L&D PRODUCTO (2).docx",
+        "size": "47.6 KB",
+        "extension": ".docx",
+        "type": "Microsoft Word",
+        "status": "Vigente & Aprobado",
+        "updatedAt": "2026-08-24"
+      },
+      {
+        "id": "INV-DOC-06-04",
+        "name": "BPM-PR-01a25   PROCEDIMIENTOS LIMPIEZA Y DESINFECCION.xlsx",
+        "relPath": "./invima_docs/6. LIMPIEZA Y DESINFECCIÓN/BPM-PR-01a25   PROCEDIMIENTOS LIMPIEZA Y DESINFECCION.xlsx",
+        "size": "600.6 KB",
+        "extension": ".xlsx",
+        "type": "Microsoft Excel",
+        "status": "Vigente & Aprobado",
+        "updatedAt": "2026-08-24"
+      }
+    ]
+  },
+  {
+    "id": "PRG-07",
+    "folderName": "7. MANEJO DE RESIDUOS",
+    "title": "7. MANEJO DE RESIDUOS",
+    "fileCount": 3,
+    "status": "Vigente 🟢",
+    "files": [
+      {
+        "id": "INV-DOC-07-01",
+        "name": "3. FO MANEJO DE RESIDUOS SÓLIDOS.docx",
+        "relPath": "./invima_docs/7. MANEJO DE RESIDUOS/3. FO MANEJO DE RESIDUOS SÓLIDOS.docx",
+        "size": "47.7 KB",
+        "extension": ".docx",
+        "type": "Microsoft Word",
+        "status": "Vigente & Aprobado",
+        "updatedAt": "2026-08-24"
+      },
+      {
+        "id": "INV-DOC-07-02",
+        "name": "4. Programa de Residuos Sólidos FURIA V01.docx",
+        "relPath": "./invima_docs/7. MANEJO DE RESIDUOS/4. Programa de Residuos Sólidos FURIA V01.docx",
+        "size": "1.04 MB",
+        "extension": ".docx",
+        "type": "Microsoft Word",
+        "status": "Vigente & Aprobado",
+        "updatedAt": "2026-08-24"
+      },
+      {
+        "id": "INV-DOC-07-03",
+        "name": "FORMATOS RESIDUOS - Norta.xlsx",
+        "relPath": "./invima_docs/7. MANEJO DE RESIDUOS/FORMATOS RESIDUOS - Norta.xlsx",
+        "size": "43.3 KB",
+        "extension": ".xlsx",
+        "type": "Microsoft Excel",
+        "status": "Vigente & Aprobado",
+        "updatedAt": "2026-08-24"
+      }
+    ]
+  },
+  {
+    "id": "PRG-08",
+    "folderName": "8. MANTENIMIENTO",
+    "title": "8. MANTENIMIENTO",
+    "fileCount": 5,
+    "status": "Vigente 🟢",
+    "files": [
+      {
+        "id": "INV-DOC-08-01",
+        "name": "10. FO VERIFICACION EQUIPOS.docx",
+        "relPath": "./invima_docs/8. MANTENIMIENTO/10. FO VERIFICACION EQUIPOS.docx",
+        "size": "46.1 KB",
+        "extension": ".docx",
+        "type": "Microsoft Word",
+        "status": "Vigente & Aprobado",
+        "updatedAt": "2026-08-24"
+      },
+      {
+        "id": "INV-DOC-08-02",
+        "name": "11. FO RGS MANTENIMIENTO.docx",
+        "relPath": "./invima_docs/8. MANTENIMIENTO/11. FO RGS MANTENIMIENTO.docx",
+        "size": "54.1 KB",
+        "extension": ".docx",
+        "type": "Microsoft Word",
+        "status": "Vigente & Aprobado",
+        "updatedAt": "2026-08-24"
+      },
+      {
+        "id": "INV-DOC-08-03",
+        "name": "5. Programa de Mantenimiento FURIA V1.docx",
+        "relPath": "./invima_docs/8. MANTENIMIENTO/5. Programa de Mantenimiento FURIA V1.docx",
+        "size": "4.33 MB",
+        "extension": ".docx",
+        "type": "Microsoft Word",
+        "status": "Vigente & Aprobado",
+        "updatedAt": "2026-08-24"
+      },
+      {
+        "id": "INV-DOC-08-04",
+        "name": "9. FO MVT CUARTOS FRIOS.docx",
+        "relPath": "./invima_docs/8. MANTENIMIENTO/9. FO MVT CUARTOS FRIOS.docx",
+        "size": "47.2 KB",
+        "extension": ".docx",
+        "type": "Microsoft Word",
+        "status": "Vigente & Aprobado",
+        "updatedAt": "2026-08-24"
+      },
+      {
+        "id": "INV-DOC-08-05",
+        "name": "CRONOGRAMA MANTENIMIENTO - Norta.xlsx",
+        "relPath": "./invima_docs/8. MANTENIMIENTO/CRONOGRAMA MANTENIMIENTO - Norta.xlsx",
+        "size": "179.7 KB",
+        "extension": ".xlsx",
+        "type": "Microsoft Excel",
+        "status": "Vigente & Aprobado",
+        "updatedAt": "2026-08-24"
+      }
+    ]
+  },
+  {
+    "id": "PRG-09",
+    "folderName": "9. MUESTREO",
+    "title": "9. MUESTREO",
+    "fileCount": 5,
+    "status": "Vigente 🟢",
+    "files": [
+      {
+        "id": "INV-DOC-09-01",
+        "name": "7. FO CUARTOS FRIOS.xlsx",
+        "relPath": "./invima_docs/9. MUESTREO/7. FO CUARTOS FRIOS.xlsx",
+        "size": "58.3 KB",
+        "extension": ".xlsx",
+        "type": "Microsoft Excel",
+        "status": "Vigente & Aprobado",
+        "updatedAt": "2026-08-24"
+      },
+      {
+        "id": "INV-DOC-09-02",
+        "name": "8. FO RECEPCION MATERIAS PRIMAS.docx",
+        "relPath": "./invima_docs/9. MUESTREO/8. FO RECEPCION MATERIAS PRIMAS.docx",
+        "size": "50.8 KB",
+        "extension": ".docx",
+        "type": "Microsoft Word",
+        "status": "Vigente & Aprobado",
+        "updatedAt": "2026-08-24"
+      },
+      {
+        "id": "INV-DOC-09-03",
+        "name": "CRONOGRAMA DE MUESTREO LABORTORIO EXTERNO - Norta.xlsx",
+        "relPath": "./invima_docs/9. MUESTREO/CRONOGRAMA DE MUESTREO LABORTORIO EXTERNO - Norta.xlsx",
+        "size": "43.3 KB",
+        "extension": ".xlsx",
+        "type": "Microsoft Excel",
+        "status": "Vigente & Aprobado",
+        "updatedAt": "2026-08-24"
+      },
+      {
+        "id": "INV-DOC-09-04",
+        "name": "PROCEDIMIENTO INSPECCION DE MP   - Norta.docx",
+        "relPath": "./invima_docs/9. MUESTREO/PROCEDIMIENTO INSPECCION DE MP   - Norta.docx",
+        "size": "3.94 MB",
+        "extension": ".docx",
+        "type": "Microsoft Word",
+        "status": "Vigente & Aprobado",
+        "updatedAt": "2026-08-24"
+      },
+      {
+        "id": "INV-DOC-09-05",
+        "name": "PROGRAMA DE MUESTREO  - Norta.docx",
+        "relPath": "./invima_docs/9. MUESTREO/PROGRAMA DE MUESTREO  - Norta.docx",
+        "size": "3.94 MB",
+        "extension": ".docx",
+        "type": "Microsoft Word",
+        "status": "Vigente & Aprobado",
+        "updatedAt": "2026-08-24"
+      }
+    ]
+  },
+  {
+    "id": "PRG-10",
+    "folderName": "10. PROVEEDORES",
+    "title": "10. PROVEEDORES",
+    "fileCount": 2,
+    "status": "Vigente 🟢",
+    "files": [
+      {
+        "id": "INV-DOC-10-01",
+        "name": "8. Programa Control de Proveedores FURIA V1.docx",
+        "relPath": "./invima_docs/10. PROVEEDORES/8. Programa Control de Proveedores FURIA V1.docx",
+        "size": "3.55 MB",
+        "extension": ".docx",
+        "type": "Microsoft Word",
+        "status": "Vigente & Aprobado",
+        "updatedAt": "2026-08-24"
+      },
+      {
+        "id": "INV-DOC-10-02",
+        "name": "LISTADO DE PROVEEDORES.xlsx",
+        "relPath": "./invima_docs/10. PROVEEDORES/LISTADO DE PROVEEDORES.xlsx",
+        "size": "43.1 KB",
+        "extension": ".xlsx",
+        "type": "Microsoft Excel",
+        "status": "Vigente & Aprobado",
+        "updatedAt": "2026-08-24"
+      }
+    ]
+  },
+  {
+    "id": "PRG-11",
+    "folderName": "11. TRAZABILIDAD",
+    "title": "11. TRAZABILIDAD",
+    "fileCount": 4,
+    "status": "Vigente 🟢",
+    "files": [
+      {
+        "id": "INV-DOC-11-01",
+        "name": "6. FO CONTROL PRODUCCION.docx",
+        "relPath": "./invima_docs/11. TRAZABILIDAD/6. FO CONTROL PRODUCCION.docx",
+        "size": "70.4 KB",
+        "extension": ".docx",
+        "type": "Microsoft Word",
+        "status": "Vigente & Aprobado",
+        "updatedAt": "2026-08-24"
+      },
+      {
+        "id": "INV-DOC-11-02",
+        "name": "FORMATO INSPECCIÓN VEHÍCULO.xlsx",
+        "relPath": "./invima_docs/11. TRAZABILIDAD/FORMATO INSPECCIÓN VEHÍCULO.xlsx",
+        "size": "43.7 KB",
+        "extension": ".xlsx",
+        "type": "Microsoft Excel",
+        "status": "Vigente & Aprobado",
+        "updatedAt": "2026-08-24"
+      },
+      {
+        "id": "INV-DOC-11-03",
+        "name": "PROGRAMA DE TRAZABILIDAD - Norta.docx",
+        "relPath": "./invima_docs/11. TRAZABILIDAD/PROGRAMA DE TRAZABILIDAD - Norta.docx",
+        "size": "3.86 MB",
+        "extension": ".docx",
+        "type": "Microsoft Word",
+        "status": "Vigente & Aprobado",
+        "updatedAt": "2026-08-24"
+      },
+      {
+        "id": "INV-DOC-11-04",
+        "name": "REGISTRO CONTRAMUESTRAS.xlsx",
+        "relPath": "./invima_docs/11. TRAZABILIDAD/REGISTRO CONTRAMUESTRAS.xlsx",
+        "size": "42.2 KB",
+        "extension": ".xlsx",
+        "type": "Microsoft Excel",
+        "status": "Vigente & Aprobado",
+        "updatedAt": "2026-08-24"
+      }
+    ]
+  }
+]
