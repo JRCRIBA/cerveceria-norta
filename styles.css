@@ -760,6 +760,33 @@ aside {
   min-width: 16rem !important;
   max-width: 16rem !important;
   flex-shrink: 0 !important;
+  transition: transform 0.25s ease, opacity 0.2s ease;
+}
+
+/* Ocultar barra lateral cuando esté colapsada (Modo Pantalla Completa y Móvil) */
+aside.sidebar-collapsed {
+  display: none !important;
+  width: 0 !important;
+  min-width: 0 !important;
+  max-width: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
+}
+
+/* Comportamiento Móvil / Tablet (< 1024px) */
+@media (max-width: 1023px) {
+  aside {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    bottom: 0 !important;
+    height: 100vh !important;
+    z-index: 50 !important;
+    box-shadow: 6px 0 28px rgba(0, 0, 0, 0.6) !important;
+  }
 }
 
 aside nav {
